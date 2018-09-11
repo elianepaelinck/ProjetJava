@@ -32,8 +32,8 @@ public class ProjetJava {
   @PostConstruct
   public void init() {
     userDao.deleteAll();
-    userDao.save(new User(null,"Loic", "Ortola"));
-    userDao.save(new User(null, "Ambroise", "Soullier"));
-    userDao.save(new User(null, "Harry", "Covert"));
+    userDao.save(new User("loic@mail.com","Loic", "Ortola", "password"));
+    userDao.save(new User("ambroise@mail.com", "Ambroise", "Soullier","password"));
+    userDao.save(new User("harry@mail.com", "Harry", "Covert", "password"));
   }
 }
