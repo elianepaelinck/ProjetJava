@@ -31,6 +31,8 @@ public class UsersController {
      * @param model le modèle
      * @return
      */
+
+
     @GetMapping("/users")
     public String getUsers(Model model) {
         model.addAttribute("data", userDao.findAll());
