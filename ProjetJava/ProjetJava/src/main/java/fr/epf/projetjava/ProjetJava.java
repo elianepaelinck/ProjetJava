@@ -48,20 +48,20 @@ public class ProjetJava {
     User luc = new User(null,"luc","lebert");
     User val = new User(null,"val","mazhar");
 
-    ArrayList testU = new ArrayList();
-    testU.add(luc);
-    testU.add(val);
-
-    ArrayList testT = new ArrayList();
-    testT.add(new Task(null,"tache de luc",null,"ceci est ma tache", luc));
+//    ArrayList testU = new ArrayList();
+//    testU.add(luc);
+//    testU.add(val);
+//
+//    ArrayList testT = new ArrayList();
+//    testT.add(new Task(null,"tache de luc",null,"ceci est ma tache", luc));
 
 //    Project testProject = new Project (null,"new projet", testU, testT);
 
 //    projectDao.deleteAll();
 //    projectDao.save(testProject);
 
-      taskDao.deleteAll();
-      taskDao.save(new Task(null,"tache de luc",false,"ceci est ma tache", luc));
+      //taskDao.deleteAll();
+      //taskDao.save(new Task(null,"tache de luc",false,"ceci est ma tache", luc));
 
   }
 }
