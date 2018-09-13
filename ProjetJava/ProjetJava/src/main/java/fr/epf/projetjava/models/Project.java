@@ -1,21 +1,19 @@
 package fr.epf.projetjava.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.ArrayList;
 
 @Entity
-
 public class Project {
 
     @Id @GeneratedValue
     private Integer id;
-
     private String nom;
 
-    private ArrayList<User> worker = new ArrayList<User>();
-    private ArrayList<Task> projectTasks = new ArrayList<Task>();
+    @ElementCollection
+    private ArrayList<User> worker = new ArrayList<>();
+    @ElementCollection
+    private ArrayList<Task> projectTasks = new ArrayList<>();
 
     public Integer getId() {
         return id;

@@ -20,7 +20,9 @@ public class ProjetJava {
   
   @Autowired
   private UserDao userDao;
+  @Autowired
   private ProjectDao projectDao;
+  @Autowired
   private TaskDao taskDao;
   
   public static void main(String[] args) {
@@ -41,27 +43,38 @@ public class ProjetJava {
   @PostConstruct
   public void init() {
     userDao.deleteAll();
+    taskDao.deleteAll();
+    projectDao.deleteAll();
+
     userDao.save(new User(null,"Loic", "Ortola"));
     userDao.save(new User(null, "Ambroise", "Soullier"));
     userDao.save(new User(null, "Harry", "Covert"));
 
+    //utilisateurs test
     User luc = new User(null,"luc","lebert");
     User val = new User(null,"val","mazhar");
+    userDao.save(luc);
+    userDao.save(val);
 
-//    ArrayList testU = new ArrayList();
-//    testU.add(luc);
-//    testU.add(val);
-//
-//    ArrayList testT = new ArrayList();
-//    testT.add(new Task(null,"tache de luc",null,"ceci est ma tache", luc));
+    Task tache1 = new Task(null,"tache de luc",false,"faire le menage", luc);
+    Task tache2 = new Task(null, "tache de val", true, "ranger sa chambre",val);
+    taskDao.save(tache2);
+    taskDao.save(tache1);
 
-//    Project testProject = new Project (null,"new projet", testU, testT);
+    //liste utilisateurs test
+    ArrayList listeUser = new ArrayList();
+    listeUser.add(luc);
+    listeUser.add(val);
 
-//    projectDao.deleteAll();
-//    projectDao.save(testProject);
+    //liste taches test
+    ArrayList listeTask = new ArrayList();
+    listeTask.add(tache1);
 
-      //taskDao.deleteAll();
-      //taskDao.save(new Task(null,"tache de luc",false,"ceci est ma tache", luc));
+    Project testProject = new Project (null,"new projet", listeUser, listeTask);
+
+    projectDao.save(testProject);
+
+
 
   }
 }
