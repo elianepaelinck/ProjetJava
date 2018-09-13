@@ -1,6 +1,8 @@
 package fr.epf.projetjava.models;
 
+
 import javax.persistence.*;
+
 
 @Entity
 
