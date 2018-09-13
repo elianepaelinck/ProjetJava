@@ -1,11 +1,28 @@
 package fr.epf.projetjava.models;
 
+import javax.persistence.*;
+
+@Entity
 public class Task {
 
+    @Id
+    @GeneratedValue
+    private Integer id;
+
     private String nom;
-    private String statut;
-    private String echeance;
+    private Boolean statut;
+    private String description;
+
+    @ManyToOne
     private User user;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getNom() {
         return nom;
@@ -15,21 +32,22 @@ public class Task {
         this.nom = nom;
     }
 
-    public String getStatut() {
+    public Boolean getStatut() {
         return statut;
     }
 
-    public void setStatut(String statut) {
+    public void setStatut(Boolean statut) {
         this.statut = statut;
     }
 
     public String getEcheance() {
-        return echeance;
+        return description;
     }
 
-    public void setEcheance(String echeance) {
-        this.echeance = echeance;
+    public void setEcheance(String description) {
+        this.description = description;
     }
+
 
     public User getUser() {
         return user;
@@ -39,10 +57,11 @@ public class Task {
         this.user = user;
     }
 
-    public Task(String nom, String statut, String echeance, User user) {
+    public Task(Integer id, String nom, Boolean statut, String description, User user) {
+        this.id=id;
         this.nom = nom;
         this.statut = statut;
-        this.echeance = echeance;
+        this.description = description;
         this.user = user;
     }
 
