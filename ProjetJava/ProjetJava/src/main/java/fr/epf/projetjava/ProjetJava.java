@@ -74,7 +74,5 @@ public class ProjetJava {
 
     projectDao.save(testProject);
 
-
-
   }
 }
