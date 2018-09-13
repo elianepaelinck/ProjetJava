@@ -3,7 +3,6 @@ package fr.epf.projetjava.models;
 import javax.persistence.*;
 
 @Entity
-
 public class Task {
 
     @Id
@@ -48,6 +47,7 @@ public class Task {
     public void setEcheance(String description) {
         this.description = description;
     }
+
 
     public User getUser() {
         return user;
