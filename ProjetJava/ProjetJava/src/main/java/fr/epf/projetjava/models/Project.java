@@ -9,10 +9,8 @@ public class Project {
     @Id @GeneratedValue
     private Integer id;
     private String nom;
-
-    @ElementCollection
+    
     private ArrayList<User> worker = new ArrayList<>();
-    @ElementCollection
     private ArrayList<Task> projectTasks = new ArrayList<>();
 
     public Integer getId() {
