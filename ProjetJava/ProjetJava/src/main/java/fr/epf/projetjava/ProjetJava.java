@@ -72,7 +72,7 @@ public class ProjetJava {
 
     Project testProject = new Project (null,"new projet", listeUser, listeTask);
 
-    projectDao.save(testProject);
+    //projectDao.save(testProject);
 
   }
 }
