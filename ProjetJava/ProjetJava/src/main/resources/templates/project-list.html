@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>id </th>
+        <th>nom </th>
+        <th>description</th>
+        <th>user</th>
+    </tr>
+    <tr th:each="proj : ${data}">
+        <td th:text="${proj.id}"></td>
+        <td th:text="${proj.nom}"></td>
+        <td th:text="${proj.description}"></td>
+        <td th:text="${proj.user.lastName}"></td>
+    </tr>
+</table>
+</body>
+</html>

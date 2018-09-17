@@ -44,11 +44,7 @@ public class UsersController {
      */
     @GetMapping("/users")
     public String getUsers( Model model) {
-
         model.addAttribute("data", userDao.findAll());
-
-
-        //System.out.println();
         return "users-list";
     }
 

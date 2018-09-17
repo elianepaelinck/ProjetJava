@@ -12,22 +12,11 @@ public class Task {
     @Id
     @GeneratedValue
     private Integer id;
-
-
-
-    @ManyToOne
-    private Project project;
-
     private String nom;
     private Boolean statut;
     private String description;
-
     @ManyToMany
     private List<User> user;
-
-    public Project getProject() { return project;    }
-
-    public void setProject(Project project) { this.project = project;    }
 
     public Integer getId() {
         return id;
@@ -53,11 +42,11 @@ public class Task {
         this.statut = statut;
     }
 
-    public String getEcheance() {
+    public String getDescription() {
         return description;
     }
 
-    public void setEcheance(String description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
@@ -69,9 +58,8 @@ public class Task {
         this.user = user;
     }
 
-    public Task(Integer id, Project project, String nom, Boolean statut, String description, List<User> user) {
+    public Task(Integer id, String nom, Boolean statut, String description, List<User> user) {
         this.id = id;
-        this.project = project;
         this.nom = nom;
         this.statut = statut;
         this.description = description;

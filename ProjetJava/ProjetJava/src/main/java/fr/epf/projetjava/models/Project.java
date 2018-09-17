@@ -1,7 +1,7 @@
 package fr.epf.projetjava.models;
 
 import javax.persistence.*;
-import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 
@@ -10,8 +10,10 @@ public class Project {
     @Id @GeneratedValue
     private Integer id;
     private String nom;
-   // private ArrayList<User> worker = new ArrayList<User>();
-    //private ArrayList<Task> projectTasks = new ArrayList<Task>();
+    @ManyToMany
+    private List<User> worker ;
+    @ManyToMany
+    private List<Task> TasksP ;
 
 
     public Integer getId() {
@@ -30,23 +32,23 @@ public class Project {
         this.nom = nom;
     }
 
-   /* public ArrayList<User> getWorker() {
+    public List<User> getWorker() {
         return worker;
     }
 
-    public void setWorker(ArrayList<User> worker) {
+    public void setWorker(List<User> worker) {
         this.worker = worker;
     }
-*/
-    //public ArrayList<Task> getProjectTasks() {return projectTasks;}
 
-    //public void setProjectTasks(ArrayList<Task> projectTasks) {this.projectTasks = projectTasks;}
+    public List<Task> getTasksP() {return TasksP;}
 
-    public Project(Integer id, String nom/*, ArrayList<User> worker*/ /*,ArrayList<Task> projectTasks*/) {
+    public void setTasksP(List<Task> TasksP) {this.TasksP = TasksP;}
+
+    public Project(Integer id, String nom, List<User> worker,List<Task> TasksP) {
         this.id=id;
         this.nom = nom;
-       // this.worker = worker;
-        //this.projectTasks = projectTasks;
+        this.worker = worker;
+        this.TasksP = TasksP;
     }
 
     public Project() {

@@ -13,6 +13,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
+import java.util.List;
 
 @SpringBootApplication
 @EnableJpaRepositories
@@ -57,28 +58,22 @@ public class ProjetJava {
     userDao.save(val);
 
     //liste utilisateurs test
-     ArrayList<User> listeUser = new ArrayList();
-     listeUser.add(luc);
-     listeUser.add(val);
+     List<User> listeUser2 = new ArrayList();
+     listeUser2.add(luc);
+     listeUser2.add(val);
+     List<User> listeUser1 = new ArrayList();
+     listeUser1.add(luc);
 
-    Project testProject = new Project(null, "new project" );
-    projectDao.save(testProject);
-
-    Task tache1 = new Task(null,testProject, "luc", false, "faire le menage", listeUser);
-    //Task tache2 = new Task(null, testProject, "taChehe de val", true, "ranger sa chambre", val);
-    //taskDao.save(tache2);
+    Task tache1 = new Task(null, "luchu ctg", false, "faire le menage", listeUser2);
+    Task tache2 = new Task(null,  "val", true, "ranger sa chambre", listeUser1);
+    taskDao.save(tache2);
     taskDao.save(tache1);
+    List<Task> listeTask2 = new ArrayList();
+    listeTask2.add(tache2);
+    listeTask2.add(tache1);
 
-
-
-
-    //liste taches test
-    ArrayList listeTask = new ArrayList();
-    listeTask.add(tache1);
-
-
-    //projectDao.save(testProject);
-    System.out.println();
+    Project testProject = new Project(null, "new project" , listeUser2, listeTask2);
+    projectDao.save(testProject);
 
   }
 }
