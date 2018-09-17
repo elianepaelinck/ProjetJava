@@ -56,25 +56,29 @@ public class ProjetJava {
     userDao.save(luc);
     userDao.save(val);
 
+    //liste utilisateurs test
+     ArrayList<User> listeUser = new ArrayList();
+     listeUser.add(luc);
+     listeUser.add(val);
 
-    Task tache1 = new Task(null, "tache de luc", false, "faire le menage", luc);
-    Task tache2 = new Task(null, "tache de val", true, "ranger sa chambre", val);
-    taskDao.save(tache2);
+    Project testProject = new Project(null, "new project" );
+    projectDao.save(testProject);
+
+    Task tache1 = new Task(null,testProject, "luc", false, "faire le menage", listeUser);
+    //Task tache2 = new Task(null, testProject, "taChehe de val", true, "ranger sa chambre", val);
+    //taskDao.save(tache2);
     taskDao.save(tache1);
 
 
-    //liste utilisateurs test
-    ArrayList listeUser = new ArrayList();
-    listeUser.add(luc);
-    listeUser.add(val);
+
 
     //liste taches test
     ArrayList listeTask = new ArrayList();
     listeTask.add(tache1);
 
-    Project testProject = new Project(null, "new projet", listeUser, listeTask);
+
     //projectDao.save(testProject);
-    String listeU = listeUser.toString();
-    System.out.println(listeU);
+    System.out.println();
+
   }
 }

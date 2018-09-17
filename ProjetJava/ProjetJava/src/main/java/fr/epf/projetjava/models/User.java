@@ -10,8 +10,8 @@ import javax.persistence.Id;
 
 public class User {
 
-    @Id @GeneratedValue
 
+    @Id @GeneratedValue
     private Integer id;
     private String firstName;
     private String lastName;

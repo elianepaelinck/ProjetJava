@@ -10,8 +10,8 @@ public class Project {
     @Id @GeneratedValue
     private Integer id;
     private String nom;
-    private ArrayList<User> worker = new ArrayList<User>();
-    private ArrayList<Task> projectTasks = new ArrayList<Task>();
+   // private ArrayList<User> worker = new ArrayList<User>();
+    //private ArrayList<Task> projectTasks = new ArrayList<Task>();
 
 
     public Integer getId() {
@@ -30,27 +30,23 @@ public class Project {
         this.nom = nom;
     }
 
-    public ArrayList<User> getWorker() {
+   /* public ArrayList<User> getWorker() {
         return worker;
     }
 
     public void setWorker(ArrayList<User> worker) {
         this.worker = worker;
     }
+*/
+    //public ArrayList<Task> getProjectTasks() {return projectTasks;}
 
-    public ArrayList<Task> getProjectTasks() {
-        return projectTasks;
-    }
+    //public void setProjectTasks(ArrayList<Task> projectTasks) {this.projectTasks = projectTasks;}
 
-    public void setProjectTasks(ArrayList<Task> projectTasks) {
-        this.projectTasks = projectTasks;
-    }
-
-    public Project(Integer id, String nom, ArrayList<User> worker, ArrayList<Task> projectTasks) {
+    public Project(Integer id, String nom/*, ArrayList<User> worker*/ /*,ArrayList<Task> projectTasks*/) {
         this.id=id;
         this.nom = nom;
-        this.worker = worker;
-        this.projectTasks = projectTasks;
+       // this.worker = worker;
+        //this.projectTasks = projectTasks;
     }
 
     public Project() {

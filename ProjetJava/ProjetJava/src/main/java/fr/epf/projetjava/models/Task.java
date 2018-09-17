@@ -2,6 +2,7 @@ package fr.epf.projetjava.models;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -12,12 +13,21 @@ public class Task {
     @GeneratedValue
     private Integer id;
 
+
+
+    @ManyToOne
+    private Project project;
+
     private String nom;
     private Boolean statut;
     private String description;
 
-    @ManyToOne
-    private User user;
+    @ManyToMany
+    private List<User> user;
+
+    public Project getProject() { return project;    }
+
+    public void setProject(Project project) { this.project = project;    }
 
     public Integer getId() {
         return id;
@@ -51,16 +61,17 @@ public class Task {
         this.description = description;
     }
 
-    public User getUser() {
+    public List<User> getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(List<User> user) {
         this.user = user;
     }
 
-    public Task(Integer id, String nom, Boolean statut, String description, User user) {
-        this.id=id;
+    public Task(Integer id, Project project, String nom, Boolean statut, String description, List<User> user) {
+        this.id = id;
+        this.project = project;
         this.nom = nom;
         this.statut = statut;
         this.description = description;

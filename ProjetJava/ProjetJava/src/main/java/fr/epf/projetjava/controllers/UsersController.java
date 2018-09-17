@@ -1,11 +1,19 @@
 package fr.epf.projetjava.controllers;
 
 import fr.epf.projetjava.models.User;
+import fr.epf.projetjava.persistence.TaskDao;
 import fr.epf.projetjava.persistence.UserDao;
+import org.springframework.data.annotation.Id;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import java.util.List;
 
 /**
  * TODO class details.
@@ -13,13 +21,16 @@ import org.springframework.web.bind.annotation.PostMapping;
  * @author Loïc Ortola on 10/09/2018
  */
 @Controller
+
 public class UsersController {
 
     private final UserDao userDao;
 
+
     public UsersController(UserDao userDao) {
         this.userDao = userDao;
     }
+
 
     /**
      * Ceci sera mappé sur l'URL '/users'.
@@ -32,8 +43,12 @@ public class UsersController {
      * @return
      */
     @GetMapping("/users")
-    public String getUsers(Model model) {
+    public String getUsers( Model model) {
+
         model.addAttribute("data", userDao.findAll());
+
+
+        //System.out.println();
         return "users-list";
     }
 
