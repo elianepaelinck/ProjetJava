@@ -16,7 +16,7 @@ public class Task {
     private Boolean statut;
     private String description;
     @ManyToMany
-    private List<User> user;
+    private List<User> users;
 
     public Integer getId() {
         return id;
@@ -50,12 +50,12 @@ public class Task {
         this.description = description;
     }
 
-    public List<User> getUser() {
-        return user;
+    public List<User> getUsers() {
+        return users;
     }
 
-    public void setUser(List<User> user) {
-        this.user = user;
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
 
     public Task(Integer id, String nom, Boolean statut, String description, List<User> user) {
@@ -63,11 +63,23 @@ public class Task {
         this.nom = nom;
         this.statut = statut;
         this.description = description;
-        this.user = user;
+        this.users = user;
     }
 
     public Task() {
     }
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", statut=" + statut +
+                ", description='" + description + '\'' +
+                ", users=" + users +
+                '}';
+    }
 }
+
 
 

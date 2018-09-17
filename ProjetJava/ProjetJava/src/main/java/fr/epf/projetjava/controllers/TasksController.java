@@ -26,6 +26,6 @@ public class TasksController {
                 }
         model.addAttribute("modell",tachee);
 
-        return "tasks-user";
+        return "tasks-list";
     }
 }
