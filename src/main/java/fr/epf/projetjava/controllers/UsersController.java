@@ -1,5 +1,6 @@
 package fr.epf.projetjava.controllers;
 
+import fr.epf.projetjava.models.LoginForm;
 import fr.epf.projetjava.models.User;
 import fr.epf.projetjava.persistence.UserDao;
 import org.springframework.stereotype.Controller;
@@ -51,11 +52,18 @@ public class UsersController {
 
     @GetMapping("/index")
     public String index(Model model) {
+        model.addAttribute("data", userDao.findAll());
         return "index";
     }
 
     @GetMapping("/login")
     public String login(Model model) {
+        model.addAttribute("loginForm", new LoginForm());
+        return "login";
+    }
+    @PostMapping("/login")
+    public String checkLogin(Model model, LoginForm loginForm) {
+
         return "login";
     }
 
