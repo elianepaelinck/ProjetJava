@@ -22,9 +22,16 @@ public class ProjectsController {
     @GetMapping("/project")
     public String getProject( Model model) {
         model.addAttribute("data", projectDao.findAll());
+        model.addAttribute("project", new Project());
         return "test_add_project";
     }
 
-    @PostMapping("/Project")
+    @PostMapping("/project")
+    public String addProject( Project project, Model model) {
+        projectDao.save(project);
+        return ("redirect:/project");
+    }
+
+
 
 }
