@@ -1269,6 +1269,11 @@
 .text-shadow-white {
   text-shadow: 1px 1px 0 #ffffff;
 }
+
+.text-shadow-grey {
+  text-shadow: 2px 2px 4px #000000;
+}
+
 @media (min-width: 768px) {
   .text-center-sm {
     text-align: center !important;
@@ -1539,6 +1544,15 @@ a:hover {
   padding-bottom: 0;
   border-bottom: 2px solid #ff5821;
 }
+
+.leaveswhite{
+  background-image: url(../img/backgrounds/leaveswhite.png);
+}
+
+.leaveswood{
+  background-image: url(../img/backgrounds/leaveswood.png);
+}
+
 .benches {
   background-image: url(../img/backgrounds/benches.png);
 }
@@ -1630,7 +1644,7 @@ a.btn-hh-trigger.target-open:after {
 }
 #content {
   padding: 20px 0 20px 0;
-  background: #ffffff;
+  background: transparent;
 }
 #content > .block:first-child {
   margin-top: -20px;

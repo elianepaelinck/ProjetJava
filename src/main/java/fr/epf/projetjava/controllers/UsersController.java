@@ -49,5 +49,18 @@ public class UsersController {
         return "redirect:/users";
     }
 
+    @GetMapping("/index")
+    public String index(Model model) {
+        return "index";
+    }
 
+    @GetMapping("/login")
+    public String login(Model model) {
+        return "login";
+    }
+
+    @GetMapping("/projet")
+    public String projet(Model model) {
+        return "projet";
+    }
 }
