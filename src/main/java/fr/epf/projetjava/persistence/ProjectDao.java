@@ -8,3 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ProjectDao extends CrudRepository<Project, Integer> {
 
+}
+
