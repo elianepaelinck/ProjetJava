@@ -62,5 +62,11 @@ public class UsersController {
         return "redirect:/users";
     }
 
+    @GetMapping("/project")
+    public String showUser(Model model){
+        model.addAttribute("datas",userDao.findAll());
+    }
+
+
 
 }

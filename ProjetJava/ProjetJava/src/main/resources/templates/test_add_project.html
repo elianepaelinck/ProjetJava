@@ -12,9 +12,13 @@
                th:field="*{nom}" placeholder="Nom">
     </div>
     <div class="form-group">
-        <label for="worker">Utilisateur</label>
-        <input type="text" id="worker" class="input-lg form-control"
-                placeholder="Utilisateur">
+        <label> Utilisateur </label>
+        <select>
+            <option>bouh</option>
+        </select>
+        <select th:each="user : ${datas}">
+            <option th:text="${user.id}"></option>
+        </select>
     </div>
     <div class="text-right">
         <button type="submit" class="btn btn-lg btn-primary">Enregistrer</button>
