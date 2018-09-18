@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Projet</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+  <!-- Fav and touch icons -->
+  <link rel="shortcut icon" href="img/icons/favicon.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/icons/114x114.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/icons/72x72.png">
+  <link rel="apple-touch-icon-precomposed" href="img/icons/default.png">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900" rel="stylesheet">
+
+  <!-- Bootstrap CSS File -->
+  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="lib/owlcarousel/owl.carousel.min.css" rel="stylesheet">
+  <link href="lib/owlcarousel/owl.theme.min.css" rel="stylesheet">
+  <link href="lib/owlcarousel/owl.transitions.min.css" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="css/style.css" rel="stylesheet">
+
+  <!--Your custom colour override - predefined colours are: colour-blue.css, colour-green.css, colour-lavander.css, orange is default-->
+  <link href="css/colour-green.css" id="colour-scheme" rel="stylesheet">
+
+</head>
+
+<body class="page-index has-hero">
+  <!--Change the background class to alter background image, options are: benches, boots, buildings, city, metro -->
+  <div id="background-wrapper" class="leaveswhite" data-stellar-background-ratio="0.8">
+
+  <!-- ======== @Region: #content ======== -->
+      <div class="block-contained">
+          <h1 class="h-lg m-t-0 m-b-lg text-shadow-grey">
+              Projet 1
+              <a class="btn btn-more" data-toggle="modal" data-target="#ajoutertache"><i class="fa fa-plus"></i>Ajouter une tâche</a>
+          </h1>
+
+          <!--Modal-->
+          <div class="modal fade" id="ajoutertache" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                          </button>
+                          <h5 class="modal-title" id="exampleModalLabel">Ajouter une tâche</h5>
+                      </div>
+                      <div class="modal-body">
+                          <form accept-charset="UTF-8" role="form">
+                              <fieldset>
+                                  <div class="form-group">
+                                      <div class="input-group input-group-lg">
+                                          <span class="input-group-addon"><i class="fa fa-fw fa-pencil"></i></span>
+                                          <input type="text" class="form-control" placeholder="Nom de la tâche">
+                                      </div>
+                                  </div>
+                                  <div class="form-group">
+                                      <div class="input-group input-group-lg">
+                                          <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
+                                          <select multiple class="form-control">
+                                              <option>Luc</option>
+                                              <option>Eliane</option>
+                                              <option>Valentin</option>
+                                              <option>Henri</option>
+                                          </select>
+                                      </div>
+                                  </div>
+                              </fieldset>
+                          </form>
+                      </div>
+                      <div class="modal-footer">
+                          <input class="btn btn-lg btn-primary btn-block" type="submit" value="Ajouter" data-dismiss="modal">
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <div class="row">
+              <div class="col-md-3 text-center">
+                  <div class="panel panel-default panel-pricing panel-pricing-highlighted text-center">
+                      <div class="panel-heading">
+                          <h4 class="panel-title">
+                              Tâche 1
+                          </h4>
+                      </div>
+                      <div class="panel-pricing-price">Ranger sa chambre</div>
+                      <div class="panel-body">
+                          <ul class="list-dotted">
+                              <li>Valentin</li>
+                              <li>Luc</li>
+                              <li>Benoit</li>
+                          </ul>
+                          <a data-toggle="modal" data-target="#modifier" class="btn btn-primary btn-sm">Modifier</a>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-3 text-center">
+                  <div class="panel panel-default panel-pricing panel-pricing-highlighted text-center">
+                      <div class="panel-heading">
+                          <h4 class="panel-title">
+                              Tâche 2
+                          </h4>
+                      </div>
+                      <div class="panel-pricing-price">Faire le ménage</div>
+                      <div class="panel-body">
+                          <ul class="list-dotted">
+                              <li>Luc</li>
+                              <li>Eliane</li>
+                          </ul>
+                          <a data-toggle="modal" data-target="#modifier" class="btn btn-primary btn-sm">Modifier</a>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-3 text-center">
+                  <div class="panel panel-default panel-pricing panel-pricing-highlighted text-center">
+                      <div class="panel-heading">
+                          <h4 class="panel-title">
+                              Tâche 3
+                          </h4>
+                      </div>
+                      <div class="panel-pricing-price">Faire les courses</div>
+                      <div class="panel-body">
+                          <ul class="list-dotted">
+                              <li>Paul</li>
+                              <li>Henri</li>
+                              <li>Benoit</li>
+                          </ul>
+                          <a data-toggle="modal" data-target="#modifier" class="btn btn-primary btn-sm">Modifier</a>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-3 text-center">
+                  <div class="panel panel-default panel-pricing panel-pricing-highlighted text-center">
+                      <div class="panel-heading">
+                          <h4 class="panel-title">
+                              Tâche 4
+                          </h4>
+                      </div>
+                      <div class="panel-pricing-price">Faire le front su site web</div>
+                      <div class="panel-body">
+                          <ul class="list-dotted">
+                              <li>Eliane</li>
+                              <li>Bob</li>
+                          </ul>
+                          <a data-toggle="modal" data-target="#modifier" class="btn btn-primary btn-sm">Modifier</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="modifier" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel2">Modifier la tâche</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                  ...
+              </div>
+              <div class="modal-footer">
+                  <input class="btn btn-lg btn-primary btn-block" type="submit" value="Modifier" data-dismiss="modal">
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <!-- Required JavaScript Libraries -->
+  <script src="lib/jquery/jquery.min.js"></script>
+  <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+  <script src="lib/stellar/stellar.min.js"></script>
+  <script src="lib/waypoints/waypoints.min.js"></script>
+  <script src="lib/counterup/counterup.min.js"></script>
+  <script src="contactform/contactform.js"></script>
+
+  <!-- Template Specisifc Custom Javascript File -->
+  <script src="js/custom.js"></script>
+
+  <!--Custom scripts demo background & colour switcher - OPTIONAL -->
+  <script src="js/color-switcher.js"></script>
+
+  <!--Contactform script -->
+  <script src="contactform/contactform.js"></script>
+
+</body>
+
+</html>
