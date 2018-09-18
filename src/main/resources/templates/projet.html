@@ -68,7 +68,7 @@
                                       <div class="input-group input-group-lg">
                                           <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
                                           <select multiple class="form-control">
-                                              <option th:each="user : ${datauser}">
+                                              <option th:each="user : ${projet.worker}">
                                                   <td th:text="${user.firstName}"></td>
                                               </option>
                                           </select>
@@ -85,25 +85,25 @@
           </div>
 
           <div class="row">
-              <div class="col-md-3 text-center">
+              <div class="col-md-3 text-center" th:each="task : ${projet.TasksP}">
                   <div class="panel panel-default panel-pricing panel-pricing-highlighted text-center">
                       <div class="panel-heading">
                           <h4 class="panel-title">
-                              Tâche 1
+                              <td th:text="${task.nom}"></td>
                           </h4>
                       </div>
                       <div class="panel-pricing-price">Ranger sa chambre</div>
                       <div class="panel-body">
-                          <ul class="list-dotted">
-                              <li>Valentin</li>
-                              <li>Luc</li>
-                              <li>Benoit</li>
+                          <ul class="list-dotted" >
+                              <li th:each="uti : ${task.users}">
+                                  <td th:text="${uti.firstName}"></td>
+                              </li>
                           </ul>
                           <a data-toggle="modal" data-target="#modifier" class="btn btn-primary btn-sm">Modifier</a>
                       </div>
                   </div>
               </div>
-              <div class="col-md-3 text-center">
+              <!--<div class="col-md-3 text-center">
                   <div class="panel panel-default panel-pricing panel-pricing-highlighted text-center">
                       <div class="panel-heading">
                           <h4 class="panel-title">
@@ -154,7 +154,7 @@
                           <a data-toggle="modal" data-target="#modifier" class="btn btn-primary btn-sm">Modifier</a>
                       </div>
                   </div>
-              </div>
+              </div>-->
           </div>
       </div>
   </div>
