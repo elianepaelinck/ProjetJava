@@ -13,20 +13,23 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
+import java.util.List;
 
 @SpringBootApplication
 @EnableJpaRepositories
 public class ProjetJava {
-  
+
   @Autowired
   private UserDao userDao;
+  @Autowired
   private ProjectDao projectDao;
+  @Autowired
   private TaskDao taskDao;
-  
+
   public static void main(String[] args) {
     // Point d'entrée de l'application.
     // On dit à Spring de s'initialiser
-    // Il va aller "regarder" nos classes et détecter les annotations des singletons 
+    // Il va aller "regarder" nos classes et détecter les annotations des singletons
     // (@Controller, @Repository, @Component, @Service, etc...)
     // Ensuite, il va construire l'arbre de dépendances et le résoudre en injectant les données dans les bonnes classes
 
@@ -41,27 +44,36 @@ public class ProjetJava {
   @PostConstruct
   public void init() {
     userDao.deleteAll();
-    userDao.save(new User(null,"Loic", "Ortola"));
+    taskDao.deleteAll();
+    projectDao.deleteAll();
+
+    userDao.save(new User(null, "Loic", "Ortola"));
     userDao.save(new User(null, "Ambroise", "Soullier"));
     userDao.save(new User(null, "Harry", "Covert"));
 
-    User luc = new User(null,"luc","lebert");
-    User val = new User(null,"val","mazhar");
+    //utilisateurs test
+    User luc = new User(null, "luc", "lebert");
+    User val = new User(null, "val", "mazhar");
+    userDao.save(luc);
+    userDao.save(val);
 
-//    ArrayList testU = new ArrayList();
-//    testU.add(luc);
-//    testU.add(val);
-//
-//    ArrayList testT = new ArrayList();
-//    testT.add(new Task(null,"tache de luc",null,"ceci est ma tache", luc));
+    //liste utilisateurs test
+     List<User> listeUser2 = new ArrayList();
+     listeUser2.add(luc);
+     listeUser2.add(val);
+     List<User> listeUser1 = new ArrayList();
+     listeUser1.add(luc);
 
-//    Project testProject = new Project (null,"new projet", testU, testT);
+    Task tache1 = new Task(null, "luchu ctg", false, "faire le menage", listeUser2);
+    Task tache2 = new Task(null,  "val", true, "ranger sa chambre", listeUser1);
+    taskDao.save(tache2);
+    taskDao.save(tache1);
+    List<Task> listeTask2 = new ArrayList();
+    listeTask2.add(tache2);
+    listeTask2.add(tache1);
 
-//    projectDao.deleteAll();
-//    projectDao.save(testProject);
-
-      //taskDao.deleteAll();
-      //taskDao.save(new Task(null,"tache de luc",false,"ceci est ma tache", luc));
+    Project testProject = new Project(null, "new project" , listeUser2, listeTask2);
+    projectDao.save(testProject);
 
   }
 }

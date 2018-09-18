@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:td="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>id </th>
+        <th>nom </th>
+        <th>description</th>
+        <th>user</th>
+    </tr>
+    <tr th:each="task : ${modell}">
+        <td th:text="${task.id}"></td>
+        <td th:text="${task.nom}"></td>
+        <td th:text="${task.description}"></td>
+        <td th:text="${task.users}"></td>
+    </tr>
+</table>
+</body>
+</html>
