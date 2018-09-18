@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
   <meta charset="utf-8">
@@ -41,7 +41,7 @@
   <!-- ======== @Region: #content ======== -->
       <div class="block-contained">
           <h1 class="h-lg m-t-0 m-b-lg text-shadow-grey">
-              Projet 1
+              <td th:text="${projet.nom}"></td>
               <a class="btn btn-more" data-toggle="modal" data-target="#ajoutertache"><i class="fa fa-plus"></i>Ajouter une tâche</a>
           </h1>
 
@@ -68,10 +68,9 @@
                                       <div class="input-group input-group-lg">
                                           <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
                                           <select multiple class="form-control">
-                                              <option>Luc</option>
-                                              <option>Eliane</option>
-                                              <option>Valentin</option>
-                                              <option>Henri</option>
+                                              <option th:each="user : ${datauser}">
+                                                  <td th:text="${user.firstName}"></td>
+                                              </option>
                                           </select>
                                       </div>
                                   </div>

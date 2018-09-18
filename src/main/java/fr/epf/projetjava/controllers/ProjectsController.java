@@ -18,9 +18,11 @@ public class ProjectsController {
         this.projectDao = projectDao;
     }
 
-    @GetMapping("/project")
+   /* @GetMapping("/project")
     public String getProject( Model model) {
         model.addAttribute("data", projectDao.findAll());
         return "project-list";
-    }
+    }*/
+
+
 }

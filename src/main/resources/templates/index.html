@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
   <meta charset="utf-8">
@@ -69,10 +69,9 @@
                               <div class="input-group input-group-lg">
                                   <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
                                   <select multiple class="form-control">
-                                      <option>Luc</option>
-                                      <option>Eliane</option>
-                                      <option>Valentin</option>
-                                      <option>Henri</option>
+                                      <option th:each="user : ${datauser}">
+                                          <td th:text="${user.firstName}"></td>
+                                      </option>
                                   </select>
                               </div>
                           </div>
@@ -93,20 +92,21 @@
             Mes projets
           </h2>
         <div class="item-carousel" data-toggle="owlcarousel" data-owlcarousel-settings='{"items":4, "pagination":false, "navigation":true, "itemsScaleUp":true}'>
-          <div class="item">
-            <a href="http://localhost:8080/projet" class="overlay-wrapper">
+          <div class="item" th:each="proj : ${dataproj}">
+            <a th:action="@{'/index/'+${proj.id}}" th:object="${proj}" method="GET" class="overlay-wrapper">
                 <img src="img/showcase/project1.png" alt="Project 1 image" class="img-responsive underlay">
                 <span class="overlay">
-                  <span class="overlay-content"> <span class="h4">Projet 1</span> </span>
+                  <span class="overlay-content"> <span class="h4"><td th:text="${proj.nom}"></td></span> </span>
                 </span>
               </a>
             <div class="item-details bg-noise">
               <h4 class="item-title">
-                  <a href="http://localhost:8080/projet">Projet 1</a>
+                  <form th:action="@{'/index/'+${proj.id}}" th:object="${proj}" method="GET">
+                  <button><td th:text="${proj.nom}"></td></button></form>
                 </h4>
             </div>
           </div>
-          <div class="item">
+          <!--<div class="item">
             <a href="http://localhost:8080/projet" class="overlay-wrapper">
                 <img src="img/showcase/project2.png" alt="Project 2 image" class="img-responsive underlay">
                 <span class="overlay">
@@ -196,7 +196,7 @@
                   <a href="http://localhost:8080/projet">Projet 8</a>
                 </h4>
             </div>
-          </div>
+          </div>-->
         </div>
       </div>
     </div>

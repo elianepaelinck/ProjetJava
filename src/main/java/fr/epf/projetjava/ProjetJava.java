@@ -73,7 +73,8 @@ public class ProjetJava {
     listeTask2.add(tache1);
 
     Project testProject = new Project(null, "new project" , listeUser2, listeTask2);
+    Project testProject2 = new Project(null, "new project bis" , listeUser1, listeTask2);
     projectDao.save(testProject);
-
+    projectDao.save(testProject2);
   }
 }

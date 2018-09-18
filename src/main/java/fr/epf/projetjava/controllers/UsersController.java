@@ -1,6 +1,7 @@
 package fr.epf.projetjava.controllers;
 
 import fr.epf.projetjava.models.User;
+import fr.epf.projetjava.persistence.ProjectDao;
 import fr.epf.projetjava.persistence.UserDao;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,10 +17,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class UsersController {
 
     private final UserDao userDao;
+    private ProjectsController project;
 
     public UsersController(UserDao userDao) {
         this.userDao = userDao;
     }
+
 
     /**
      * Ceci sera mappé sur l'URL '/users'.
@@ -49,18 +52,20 @@ public class UsersController {
         return "redirect:/users";
     }
 
-    @GetMapping("/index")
+    /*@GetMapping("/index")
     public String index(Model model) {
+        model.addAttribute("datauser", userDao.findAll());
+        model.addAttribute("dataproj", project.getProject(model));
         return "index";
-    }
+    }*/
 
     @GetMapping("/login")
     public String login(Model model) {
         return "login";
     }
-
+/*
     @GetMapping("/projet")
     public String projet(Model model) {
         return "projet";
-    }
+    }*/
 }
