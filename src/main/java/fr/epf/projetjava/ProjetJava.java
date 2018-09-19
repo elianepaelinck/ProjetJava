@@ -47,13 +47,13 @@ public class ProjetJava {
     taskDao.deleteAll();
     projectDao.deleteAll();
 
-    userDao.save(new User(null, "Loic", "Ortola"));
-    userDao.save(new User(null, "Ambroise", "Soullier"));
-    userDao.save(new User(null, "Harry", "Covert"));
+    userDao.save(new User(null, "Loic", "Ortola","password"));
+    userDao.save(new User(null, "Ambroise", "Soullier","password"));
+    userDao.save(new User(null, "Harry", "Covert","password"));
 
     //utilisateurs test
-    User luc = new User(null, "luc", "lebert");
-    User val = new User(null, "val", "mazhar");
+    User luc = new User(null, "luc", "lebert","password");
+    User val = new User(null, "val", "mazhar","password");
     userDao.save(luc);
     userDao.save(val);
 

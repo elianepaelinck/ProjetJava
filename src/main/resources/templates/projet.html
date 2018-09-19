@@ -2,35 +2,35 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
-  <meta charset="utf-8">
-  <title>Projet</title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta content="" name="keywords">
-  <meta content="" name="description">
+    <meta charset="utf-8">
+    <title>Projet</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
 
-  <!-- Fav and touch icons -->
-  <link rel="shortcut icon" href="img/icons/favicon.png">
-  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/icons/114x114.png">
-  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/icons/72x72.png">
-  <link rel="apple-touch-icon-precomposed" href="img/icons/default.png">
+    <!-- Fav and touch icons -->
+    <link rel="shortcut icon" href="img/icons/favicon.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/icons/114x114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/icons/72x72.png">
+    <link rel="apple-touch-icon-precomposed" href="img/icons/default.png">
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900" rel="stylesheet">
 
-  <!-- Bootstrap CSS File -->
-  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap CSS File -->
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Libraries CSS Files -->
-  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="lib/owlcarousel/owl.carousel.min.css" rel="stylesheet">
-  <link href="lib/owlcarousel/owl.theme.min.css" rel="stylesheet">
-  <link href="lib/owlcarousel/owl.transitions.min.css" rel="stylesheet">
+    <!-- Libraries CSS Files -->
+    <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/owl.theme.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/owl.transitions.min.css" rel="stylesheet">
 
-  <!-- Main Stylesheet File -->
-  <link href="css/style.css" rel="stylesheet">
+    <!-- Main Stylesheet File -->
+    <link href="css/style.css" rel="stylesheet">
 
-  <!--Your custom colour override - predefined colours are: colour-blue.css, colour-green.css, colour-lavander.css, orange is default-->
-  <link href="css/colour-green.css" id="colour-scheme" rel="stylesheet">
+    <!--Your custom colour override - predefined colours are: colour-blue.css, colour-green.css, colour-lavander.css, orange is default-->
+    <link href="css/colour-green.css" id="colour-scheme" rel="stylesheet">
 
 </head>
 
@@ -44,7 +44,7 @@
               <td th:text="${projet.nom}"></td>
               <a class="btn btn-more" data-toggle="modal" data-target="#ajoutertache"><i class="fa fa-plus"></i>Ajouter une tâche</a>
           </h1>
-
+            <form action="#" th:action="@{/index}" method="post "><button>Index</button></form>
           <!--Modal-->
           <div class="modal fade" id="ajoutertache" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
@@ -56,29 +56,35 @@
                           <h5 class="modal-title" id="exampleModalLabel">Ajouter une tâche</h5>
                       </div>
                       <div class="modal-body">
-                          <form accept-charset="UTF-8" role="form">
+                          <form action="#" th:action="@{'/projet/'+${projet.id}}" th:object="${task}" method="post" accept-charset="UTF-8" role="form">
                               <fieldset>
                                   <div class="form-group">
                                       <div class="input-group input-group-lg">
                                           <span class="input-group-addon"><i class="fa fa-fw fa-pencil"></i></span>
-                                          <input type="text" class="form-control" placeholder="Nom de la tâche">
+                                          <input type="text" class="input-lg form-control" id="firstname"
+                                                 th:field="*{nom}" placeholder="Nom">
+                                      </div>
+                                  </div>
+                                  <div class="form-group">
+                                      <div class="input-group input-group-lg">
+                                      <label for="description">Description</label>
+                                          <textarea class="form-control" id="description" rows="3" th:field="*{description}"></textarea>
                                       </div>
                                   </div>
                                   <div class="form-group">
                                       <div class="input-group input-group-lg">
                                           <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
-                                          <select multiple class="form-control">
-                                              <option th:each="user : ${projet.worker}">
-                                                  <td th:text="${user.firstName}"></td>
+                                          <select multiple class="form-control" th:field="*{users}">
+                                              <option th:each="user : ${projet.worker}" th:value="${user.id}" th:text="${user.firstName}">
                                               </option>
                                           </select>
                                       </div>
                                   </div>
+                                  <div class="text-right modal-footer">
+                                      <button type="submit" class="btn btn-lg btn-primary btn-block">Ajouter</button>
+                                  </div>
                               </fieldset>
                           </form>
-                      </div>
-                      <div class="modal-footer">
-                          <input class="btn btn-lg btn-primary btn-block" type="submit" value="Ajouter" data-dismiss="modal">
                       </div>
                   </div>
               </div>
@@ -92,7 +98,7 @@
                               <td th:text="${task.nom}"></td>
                           </h4>
                       </div>
-                      <div class="panel-pricing-price">Ranger sa chambre</div>
+                      <div class="panel-pricing-price"><td th:text="${task.description}"></td></div>
                       <div class="panel-body">
                           <ul class="list-dotted" >
                               <li th:each="uti : ${task.users}">
@@ -100,6 +106,9 @@
                               </li>
                           </ul>
                           <a data-toggle="modal" data-target="#modifier" class="btn btn-primary btn-sm">Modifier</a>
+                          <form th:action="@{'/projet/'+${projet.id}+'/'+${task.id}}" th:object="${task}" method="POST">
+                              <button>Supprimer</button>
+                          </form>
                       </div>
                   </div>
               </div>

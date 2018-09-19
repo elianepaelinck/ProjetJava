@@ -48,8 +48,6 @@
             <a data-toggle="modal" data-target="#ajouterprojet" class="btn btn-more"><i class="fa fa-plus"></i>Ajouter un projet</a>
           </h2>
 
-
-
           <!--Modal-->
           <div class="modal fade" id="ajouterprojet" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
@@ -72,9 +70,8 @@
                           <div class="form-group">
                               <div class="input-group input-group-lg">
                                   <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
-                                  <select multiple class="form-control">
-                                      <option th:each="user : ${datauser}">
-                                          <td th:text="${user.firstName}"></td>
+                                  <select multiple class="form-control" th:field="*{worker}">
+                                      <option th:each="user : ${datauser}" th:text="${user.firstName}" th:value="${user.id}">
                                       </option>
                                   </select>
                               </div>
@@ -121,20 +118,35 @@
           </h2>
         <div class="item-carousel" data-toggle="owlcarousel" data-owlcarousel-settings='{"items":4, "pagination":false, "navigation":true, "itemsScaleUp":true}'>
           <div class="item" th:each="proj : ${dataproj}">
-            <a th:action="@{'/index/'+${proj.id}}" th:object="${proj}" method="GET" class="overlay-wrapper">
+            <a class="overlay-wrapper">
                 <img src="img/showcase/project1.png" alt="Project 1 image" class="img-responsive underlay">
                 <span class="overlay">
-                  <span class="overlay-content"> <span class="h4"><td th:text="${proj.nom}"></td></span> </span>
+                  <span class="overlay-content"> <span class="h4">
+                      <form action="#" th:action="@{'/projet/'+${proj.id}}" th:object="${proj}" method="GET">
+                     <button><td th:text="${proj.nom}"></td></button>
+                  </form>
+                      </span> </span>
                 </span>
               </a>
             <div class="item-details bg-noise">
-              <h4 class="item-title">
-                  <form th:action="@{'/index/'+${proj.id}}" th:object="${proj}" method="GET">
-                  <button><td th:text="${proj.nom}"></td></button></form>
-                </h4>
+              <h4 class="item-title row">
+                  <div class="col-sm-9">
+                  <form action="#" th:action="@{'/projet/'+${proj.id}}" th:object="${proj}" method="GET">
+                     <button><td th:text="${proj.nom}"></td></button>
+                  </form></div>
+                  <div class="col-sm-3">
+                  <form action="#" th:action="@{'/index/'+${proj.id}}" th:object="${proj}" method="POST">
+                      <button class="fa fa-trash"></button>
+                  </form></div>
+              </h4>
             </div>
           </div>
+
           <!--<div class="item">
+
+          <form th:action="@{'/projet/'+${proj.id}}" th:object="${proj}" method="GET">
+                  <button><td th:text="${proj.nom}"></td></button></form>
+
             <a href="http://localhost:8080/projet" class="overlay-wrapper">
                 <img src="img/showcase/project2.png" alt="Project 2 image" class="img-responsive underlay">
                 <span class="overlay">
