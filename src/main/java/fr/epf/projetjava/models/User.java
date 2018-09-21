@@ -15,6 +15,15 @@ public class User {
     private Integer id;
     private String firstName;
     private String lastName;
+    private String password;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public Integer getId() {
         return id;
@@ -40,10 +49,11 @@ public class User {
         this.lastName = lastName;
     }
 
-    public User(Integer id, String firstName, String lastName) {
+    public User(Integer id, String firstName, String lastName,String password) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.password=password;
     }
 
     public User() {

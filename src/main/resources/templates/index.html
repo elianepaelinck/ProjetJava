@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
   <meta charset="utf-8">
@@ -58,28 +58,52 @@
                           </button>
                           <h5 class="modal-title" id="exampleModalLabel">Ajouter un projet</h5>
                       </div>
-                      <div class="modal-body">
-                          <div class="form-group">
-                              <div class="input-group input-group-lg">
-                                  <span class="input-group-addon"><i class="fa fa-fw fa-pencil"></i></span>
-                                  <input type="text" class="form-control" placeholder="Nom du projet">
+                      <form action="#" th:action="@{/index}" th:object="${projet}" method="post">
+                          <div class="modal-body">
+                              <div class="form-group">
+                                  <div class="input-group input-group-lg">
+                                      <span class="input-group-addon"><i class="fa fa-fw fa-pencil"></i></span>
+                                      <input type="text" class="input-lg form-control" id="firstname"
+                                             th:field="*{nom}" placeholder="Nom">
+                                  </div>
                               </div>
-                          </div>
                           <div class="form-group">
                               <div class="input-group input-group-lg">
                                   <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
-                                  <select multiple class="form-control">
-                                      <option>Luc</option>
-                                      <option>Eliane</option>
-                                      <option>Valentin</option>
-                                      <option>Henri</option>
+                                  <select multiple class="form-control" th:field="*{worker}">
+                                      <option th:each="user : ${datauser}" th:text="${user.firstName}" th:value="${user.id}">
+                                      </option>
                                   </select>
                               </div>
                           </div>
-                      </div>
-                      <div class="modal-footer">
-                          <input class="btn btn-lg btn-primary btn-block" type="submit" value="Ajouter" data-dismiss="modal">
-                      </div>
+                          </div>
+                          <div class="text-right modal-footer">
+                              <button type="submit" class="btn btn-lg btn-primary btn-block">Ajouter</button>
+                          </div>
+                      </form>
+                      <!--<form action="#" th:action="@{/index}" th:object="${projet}" method="post">
+                          <div class="modal-body">
+                              <div class="form-group">
+                                  <div class="input-group input-group-lg">
+                                      <span class="input-group-addon"><i class="fa fa-fw fa-pencil"></i></span>
+                                      <input type="text" class="form-control" placeholder="Nom du projet" th:field="*{nom}">
+                                  </div>
+                              </div>
+                              <div class="form-group">
+                                  <div class="input-group input-group-lg">
+                                      <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
+                                      <select multiple class="form-control">
+                                          <option th:each="user : ${datauser}">
+                                              <td th:text="${user.firstName}"></td>
+                                          </option>
+                                      </select>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="modal-footer">
+                              <input class="btn btn-lg btn-primary btn-block" type="submit" value="Ajouter" data-dismiss="modal">
+                          </div>
+                      </form>-->
                   </div>
               </div>
           </div>
@@ -93,20 +117,36 @@
             Mes projets
           </h2>
         <div class="item-carousel" data-toggle="owlcarousel" data-owlcarousel-settings='{"items":4, "pagination":false, "navigation":true, "itemsScaleUp":true}'>
-          <div class="item">
-            <a href="http://localhost:8080/projet" class="overlay-wrapper">
+          <div class="item" th:each="proj : ${dataproj}">
+            <a class="overlay-wrapper">
                 <img src="img/showcase/project1.png" alt="Project 1 image" class="img-responsive underlay">
                 <span class="overlay">
-                  <span class="overlay-content"> <span class="h4">Projet 1</span> </span>
+                  <span class="overlay-content"> <span class="h4">
+                      <form action="#" th:action="@{'/projet/'+${proj.id}}" th:object="${proj}" method="GET">
+                     <button><td th:text="${proj.nom}"></td></button>
+                  </form>
+                      </span> </span>
                 </span>
               </a>
             <div class="item-details bg-noise">
-              <h4 class="item-title">
-                  <a href="http://localhost:8080/projet">Projet 1</a>
-                </h4>
+              <h4 class="item-title row">
+                  <div class="col-sm-9">
+                  <form action="#" th:action="@{'/projet/'+${proj.id}}" th:object="${proj}" method="GET">
+                     <button><td th:text="${proj.nom}"></td></button>
+                  </form></div>
+                  <div class="col-sm-3">
+                  <form action="#" th:action="@{'/index/'+${proj.id}}" th:object="${proj}" method="POST">
+                      <button class="fa fa-trash"></button>
+                  </form></div>
+              </h4>
             </div>
           </div>
-          <div class="item">
+
+          <!--<div class="item">
+
+          <form th:action="@{'/projet/'+${proj.id}}" th:object="${proj}" method="GET">
+                  <button><td th:text="${proj.nom}"></td></button></form>
+
             <a href="http://localhost:8080/projet" class="overlay-wrapper">
                 <img src="img/showcase/project2.png" alt="Project 2 image" class="img-responsive underlay">
                 <span class="overlay">
@@ -196,7 +236,7 @@
                   <a href="http://localhost:8080/projet">Projet 8</a>
                 </h4>
             </div>
-          </div>
+          </div>-->
         </div>
       </div>
     </div>

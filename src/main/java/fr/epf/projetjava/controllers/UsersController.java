@@ -21,17 +21,7 @@ public class UsersController {
         this.userDao = userDao;
     }
 
-    /**
-     * Ceci sera mappé sur l'URL '/users'.
-     * C'est le routeur de Spring MVC qui va détecter et appeler directement cette méthode.
-     * Il lui fournira un "modèle", auquel on pourra rajouter des attributs.
-     * Ce modèle sera ensuite forwardé à une page web (dans resources/templates).
-     * Le nom de la template est retourné par la fonction. Ici, elle appelle donc le template "users".
-     *
-     * @param model le modèle
-     * @return
-     */
-    @GetMapping("/users")
+    /*@GetMapping("/users")
     public String getUsers(Model model) {
         model.addAttribute("data", userDao.findAll());
         return "users-list";
@@ -49,18 +39,9 @@ public class UsersController {
         return "redirect:/users";
     }
 
-    @GetMapping("/index")
-    public String index(Model model) {
-        return "index";
-    }
-
     @GetMapping("/login")
     public String login(Model model) {
         return "login";
-    }
+    }*/
 
-    @GetMapping("/projet")
-    public String projet(Model model) {
-        return "projet";
-    }
 }

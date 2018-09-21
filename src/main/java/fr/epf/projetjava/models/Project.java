@@ -1,5 +1,7 @@
 package fr.epf.projetjava.models;
 
+import fr.epf.projetjava.persistence.TaskDao;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -43,6 +45,13 @@ public class Project {
     public List<Task> getTasksP() {return TasksP;}
 
     public void setTasksP(List<Task> TasksP) {this.TasksP = TasksP;}
+
+    public void addTask(Task task){
+        TasksP.add(task);
+    }
+    public void suppTask(Task task){
+        TasksP.remove(task);
+    }
 
     public Project(Integer id, String nom, List<User> worker,List<Task> TasksP) {
         this.id=id;
