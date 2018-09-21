@@ -43,7 +43,7 @@ public class ProjetJava {
    */
   @PostConstruct
   public void init() {
-    userDao.deleteAll();
+    /*userDao.deleteAll();
     taskDao.deleteAll();
     projectDao.deleteAll();
 
@@ -75,6 +75,6 @@ public class ProjetJava {
     Project testProject = new Project(null, "new project" , listeUser2, listeTask2);
     Project testProject2 = new Project(null, "new project bis" , listeUser1, listeTask2);
     projectDao.save(testProject);
-    projectDao.save(testProject2);
+    projectDao.save(testProject2);*/
   }
 }
