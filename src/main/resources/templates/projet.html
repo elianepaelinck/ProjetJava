@@ -9,19 +9,19 @@
     <meta content="" name="description">
 
     <!-- Fav and touch icons -->
-    <link rel="shortcut icon" href="../img/icons/favicon.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../img/icons/114x114.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../img/icons/72x72.png">
-    <link rel="apple-touch-icon-precomposed" href="../img/icons/default.png">
+    <link rel="shortcut icon" href="../img/icone-projet.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../img/icone-projet.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../img/icone-projet.png">
+    <link rel="apple-touch-icon-precomposed" href="../img/icone-projet.png">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900" rel="stylesheet">
 
     <!-- Bootstrap CSS File -->
-    <link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
 
     <!-- Libraries CSS Files -->
-    <link href="../lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../lib/font-awesome/css/font-awesome.css" rel="stylesheet">
     <link href="../lib/owlcarousel/owl.carousel.min.css" rel="stylesheet">
     <link href="../lib/owlcarousel/owl.theme.min.css" rel="stylesheet">
     <link href="../lib/owlcarousel/owl.transitions.min.css" rel="stylesheet">
@@ -36,15 +36,14 @@
 
 <body class="page-index has-hero">
   <!--Change the background class to alter background image, options are: benches, boots, buildings, city, metro -->
-  <div id="background-wrapper" class="leaveswhite" data-stellar-background-ratio="0.8">
 
   <!-- ======== @Region: #content ======== -->
       <div class="block-contained">
           <h1 class="h-lg m-t-0 m-b-lg text-shadow-grey">
               <td th:text="${projet.nom}"></td>
-              <a data-toggle="modal" data-target="#ajoutertache" class="btn btn-more"><i class="fa fa-plus"></i>Ajouter une tâche</a>
+              <a class="btn btn-more" data-toggle="modal" data-target="#ajoutertache"><i class="fa fa-plus"></i>Ajouter une tâche</a>
           </h1>
-            <!--<form action="#" th:action="@{/index}" method="get"><button>Index</button></form>-->
+            <form action="#" th:action="@{/index}" method="post "><button>Index</button></form>
           <!--Modal-->
           <div class="modal fade" id="ajoutertache" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
@@ -90,8 +89,8 @@
               </div>
           </div>
 
-          <div class="row">
-              <div class="col-md-3 text-center" th:each="task : ${projet.TasksP}">
+          <div class="raw">
+              <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 text-center" th:each="task : ${projet.TasksP}">
                   <div class="panel panel-default panel-pricing panel-pricing-highlighted text-center">
                       <div class="panel-heading">
                           <h4 class="panel-title">
@@ -138,7 +137,7 @@
 
   <!-- Required JavaScript Libraries -->
   <script src="../lib/jquery/jquery.min.js"></script>
-  <script src="../lib/bootstrap/js/bootstrap.min.js"></script>
+  <script src="../lib/bootstrap/js/bootstrap.js"></script>
   <script src="../lib/owlcarousel/owl.carousel.min.js"></script>
   <script src="../lib/stellar/stellar.min.js"></script>
   <script src="../lib/waypoints/waypoints.min.js"></script>

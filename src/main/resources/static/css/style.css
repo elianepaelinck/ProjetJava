@@ -1050,6 +1050,7 @@
   display: block;
   float: left;
   padding: 0 5px;
+  cursor: pointer;
 }
 .item-carousel .item-details {
   padding: 1em;
@@ -1520,6 +1521,15 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+body {
+  margin:0;
+  padding:0;
+  background: url(../img/backgrounds/leaveswhite.png) no-repeat center fixed;
+  -webkit-background-size: cover; /* pour anciens Chrome et Safari */
+  background-size: cover; /* version standardisée */
+}
+
 body,
 html {
   font-family: "Roboto", sans-serif;
