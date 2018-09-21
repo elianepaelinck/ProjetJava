@@ -9,34 +9,33 @@
   <meta content="" name="description">
 
   <!-- Fav and touch icons -->
-  <link rel="shortcut icon" href="img/icons/favicon.png">
-  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/icons/114x114.png">
-  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/icons/72x72.png">
-  <link rel="apple-touch-icon-precomposed" href="img/icons/default.png">
+  <link rel="shortcut icon" href="../img/icone-projet.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../img/icone-projet.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../img/icone-projet.png">
+  <link rel="apple-touch-icon-precomposed" href="../img/icone-projet.png">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900" rel="stylesheet">
 
   <!-- Bootstrap CSS File -->
-  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Libraries CSS Files -->
-  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="lib/owlcarousel/owl.carousel.min.css" rel="stylesheet">
-  <link href="lib/owlcarousel/owl.theme.min.css" rel="stylesheet">
-  <link href="lib/owlcarousel/owl.transitions.min.css" rel="stylesheet">
+  <link href="../lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="../lib/owlcarousel/owl.carousel.min.css" rel="stylesheet">
+  <link href="../lib/owlcarousel/owl.theme.min.css" rel="stylesheet">
+  <link href="../lib/owlcarousel/owl.transitions.min.css" rel="stylesheet">
 
   <!-- Main Stylesheet File -->
-  <link href="css/style.css" rel="stylesheet">
+  <link href="../css/style.css" rel="stylesheet">
 
   <!--Your custom colour override - predefined colours are: colour-blue.css, colour-green.css, colour-lavander.css, orange is default-->
-  <link href="css/colour-green.css" id="colour-scheme" rel="stylesheet">
+  <link href="../css/colour-green.css" id="colour-scheme" rel="stylesheet">
 
 </head>
 
 <body class="page-index has-hero">
   <!--Change the background class to alter background image, options are: benches, boots, buildings, city, metro -->
-  <div id="background-wrapper" class="leaveswhite" data-stellar-background-ratio="0.8">
 
   <!-- ======== @Region: #content ======== -->
   <div id="content">
@@ -116,8 +115,9 @@
         <h2 class="h-lg m-t-0 m-b-lg text-shadow-grey">
             Mes projets
           </h2>
-        <div class="item-carousel" data-toggle="owlcarousel" data-owlcarousel-settings='{"items":4, "pagination":false, "navigation":true, "itemsScaleUp":true}'>
-          <div class="item" th:each="proj : ${dataproj}">
+
+          <div class ="raw">
+          <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" th:each="proj : ${dataproj}">
             <a class="overlay-wrapper">
                 <img src="img/showcase/project1.png" alt="Project 1 image" class="img-responsive underlay">
                 <span class="overlay">
@@ -140,6 +140,7 @@
                   </form></div>
               </h4>
             </div>
+          </div>
           </div>
 
           <!--<div class="item">
@@ -237,29 +238,29 @@
                 </h4>
             </div>
           </div>-->
-        </div>
+
       </div>
     </div>
   </div>
-  </div>
+
 
   <!-- Required JavaScript Libraries -->
-  <script src="lib/jquery/jquery.min.js"></script>
-  <script src="lib/bootstrap/js/bootstrap.min.js"></script>
-  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-  <script src="lib/stellar/stellar.min.js"></script>
-  <script src="lib/waypoints/waypoints.min.js"></script>
-  <script src="lib/counterup/counterup.min.js"></script>
-  <script src="contactform/contactform.js"></script>
+  <script src="../lib/jquery/jquery.min.js"></script>
+  <script src="../lib/bootstrap/js/bootstrap.min.js"></script>
+  <script src="../lib/owlcarousel/owl.carousel.min.js"></script>
+  <script src="../lib/stellar/stellar.min.js"></script>
+  <script src="../lib/waypoints/waypoints.min.js"></script>
+  <script src="../lib/counterup/counterup.min.js"></script>
+  <script src="../contactform/contactform.js"></script>
 
   <!-- Template Specisifc Custom Javascript File -->
-  <script src="js/custom.js"></script>
+  <script src="../js/custom.js"></script>
 
   <!--Custom scripts demo background & colour switcher - OPTIONAL -->
-  <script src="js/color-switcher.js"></script>
+  <script src="../js/color-switcher.js"></script>
 
   <!--Contactform script -->
-  <script src="contactform/contactform.js"></script>
+  <script src="../contactform/contactform.js"></script>
 
 </body>
 
