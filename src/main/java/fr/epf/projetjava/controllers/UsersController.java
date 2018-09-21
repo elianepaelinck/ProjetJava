@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
  *
  * @author Loïc Ortola on 10/09/2018
  */
-@Controller
+
 public class UsersController {
 
     private final UserDao userDao;

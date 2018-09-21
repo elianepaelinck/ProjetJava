@@ -10,9 +10,8 @@ import fr.epf.projetjava.persistence.UserDao;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.view.RedirectView;
+import org.springframework.web.bind.annotation.PathVariable;
 
-import java.util.List;
 
 @Controller
 public class Controllermain {
@@ -76,7 +75,7 @@ public class Controllermain {
     }
 
     //PROJECT\\
-    @GetMapping("/projet/{id}")
+    @RequestMapping(value = "/projet/{id}", method = RequestMethod.GET)
     public String projet(@PathVariable("id") int itemId, Model model) {
         model.addAttribute("datauser", userDao.findAll());
         Project project = projectDao.findById(itemId).get();
@@ -85,21 +84,21 @@ public class Controllermain {
         return "projet";
     }
 
+    //ADD TASK IN PROJECT\\
+    @RequestMapping(value = "/projet/{id}", method = RequestMethod.POST)
+    public String addTask(@PathVariable("id") int projectId, Task task, Model model){
+        Project project = projectDao.findById(projectId).get();
+        project.addTask(taskDao.save(task));
+        projectDao.save(project);
+        return "redirect:/projet/{id}";
+    }
+
     //DELETE TASK IN PROJECT\\
     @PostMapping("projet/{id}/{ID}")
     public String deleteTask(@PathVariable("id") int projId, @PathVariable("ID") int taskId, Model model) {
         Project project = projectDao.findById(projId).get();
         Task task = taskDao.findById(taskId).get();
         project.suppTask(task);
-        projectDao.save(project);
-        return "redirect:/projet/{id}";
-    }
-
-    //ADD TASK IN PROJECT\\
-    @PostMapping("/projet/{id}")
-    public String addTask(@PathVariable("id") int projectId, Task task, Model model){
-        Project project = projectDao.findById(projectId).get();
-        project.addTask(taskDao.save(task));
         projectDao.save(project);
         return "redirect:/projet/{id}";
     }
