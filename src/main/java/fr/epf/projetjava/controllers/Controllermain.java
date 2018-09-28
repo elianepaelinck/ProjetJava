@@ -41,10 +41,7 @@ public class Controllermain {
 
         for (User user:all) {
             if(login.getUsername().equals(user.getFirstName()) && login.getPassword().equals(user.getPassword())){
-                model.addAttribute("datauser", userDao.findAll());
-                model.addAttribute("dataproj", projectDao.findAll());
-                model.addAttribute("projet", new Project());
-                return "index";
+               return "redirect:/index";
             }
         }
         return "login";
