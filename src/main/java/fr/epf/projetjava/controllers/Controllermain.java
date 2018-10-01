@@ -19,6 +19,7 @@ public class Controllermain {
     private final UserDao userDao;
     private final ProjectDao projectDao;
     private final TaskDao taskDao;
+    private int IDUser=0;
 
     public Controllermain(UserDao userDao, ProjectDao projectDao, TaskDao taskDao) {
         this.userDao = userDao;
@@ -41,6 +42,7 @@ public class Controllermain {
 
         for (User user:all) {
             if(login.getUsername().equals(user.getFirstName()) && login.getPassword().equals(user.getPassword())){
+               IDUser=user.getId();
                return "redirect:/index";
             }
         }
@@ -53,6 +55,7 @@ public class Controllermain {
         model.addAttribute("datauser", userDao.findAll());
         model.addAttribute("dataproj", projectDao.findAll());
         model.addAttribute("projet", new Project());
+        model.addAttribute("user",userDao.findById(IDUser).get());
         return "index";
     }
 
