@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Login</title>
+  <title>Inscription</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
@@ -48,34 +48,38 @@
           <div class="panel panel-default">
             <div class="panel-heading">
               <h3 class="panel-title">
-                  Login
+                  Inscription
                 </h3>
             </div>
             <div class="panel-body">
-              <form accept-charset="UTF-8" role="form" action="#" th:action="@{/login}" th:object="${login}" method="post">
+              <form accept-charset="UTF-8" role="form" action="#" th:action="@{/inscription}" th:object="${user}" method="post">
                 <fieldset>
                   <div class="form-group">
                     <div class="input-group input-group-lg">
-                      <span class="input-group-addon"><i class="fa fa-fw fa-envelope"></i></span>
-                      <input th:field="*{username}" type="text" class="form-control" placeholder="Email">
+                      <span class="input-group-addon"><i class="fa fa-fw fa-pencil"></i></span>
+                      <input type="text" class="input-lg form-control" id="firstname"
+                             th:field="*{firstName}" placeholder="Prénom">
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="input-group input-group-lg">
-                      <span class="input-group-addon"><i class="fa fa-fw fa-lock"></i></span>
-                      <input th:field="*{password}" type="password" class="form-control" placeholder="Password">
+                      <span class="input-group-addon"><i class="fa fa-fw fa-pencil"></i></span>
+                      <input type="text" class="input-lg form-control" id="lastname"
+                             th:field="*{lastName}" placeholder="Nom">
                     </div>
                   </div>
-                  <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+                  <div class="form-group">
+                    <div class="input-group input-group-lg">
+                      <span class="input-group-addon"><i class="fa fa-fw fa-pencil"></i></span>
+                      <input type="password" class="input-lg form-control" id="password"
+                             th:field="*{password}" placeholder="Mot de passe">
+                    </div>
+                  </div>
+                  <div class="text-right modal-footer">
+                    <button type="submit" class="btn btn-lg btn-primary btn-block">S'incrire</button>
+                  </div>
                 </fieldset>
               </form>
-              <div>
-                <form action="#" th:action="@{/inscription}" method="get">
-                  <button>
-                    S'inscrire
-                  </button>
-                </form >
-              </div>
             </div>
           </div>
         </div>

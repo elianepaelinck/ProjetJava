@@ -78,6 +78,32 @@ public class Controllermain {
         return "index";
     }
 
+    //INSCRIPTION
+    @GetMapping("/inscription")
+    public String inscription(Model model){
+        User user = new User();
+        user.setId(null);
+        model.addAttribute("user", user );
+        return "inscription";
+    }
+
+    @PostMapping("/inscription")
+    public String newUser(Model model, User user){
+        if(user.getLastName()==null || user.getFirstName()==null || user.getPassword()==null){
+            return "inscription";
+        }
+        Iterable<User> users = userDao.findAll();
+
+        for (User worker:users) {
+            if(user.getLastName()==worker.getLastName() || user.getFirstName()==worker.getFirstName() || user.getPassword()==worker.getPassword()){
+                return "inscription";
+            }
+        }
+
+        userDao.save(user);
+        return "redirect:/login";
+    }
+
     //ADD PROJECT\\
     @PostMapping("/index")
     public String addProject(Project project, Model model) {
