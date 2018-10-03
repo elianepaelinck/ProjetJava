@@ -12,6 +12,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Controller
 public class Controllermain {
@@ -52,8 +55,24 @@ public class Controllermain {
     //INDEX\\
     @GetMapping("/index")
     public String index(Model model) {
+        if(IDUser==0){
+            return "redirect:/errorCo";
+        }
         model.addAttribute("datauser", userDao.findAll());
-        model.addAttribute("dataproj", projectDao.findAll());
+
+        Iterable<Project> allproject = projectDao.findAll();
+        List<Project> userprojet = new ArrayList<>();
+
+        for (Project projet:allproject) {
+            List<User> worker = projet.getWorker();
+            for (User user:worker) {
+                if(user.getId()==IDUser){
+                    userprojet.add(projet);
+                }
+            }
+        }
+
+        model.addAttribute("dataproj", userprojet);
         model.addAttribute("projet", new Project());
         model.addAttribute("user",userDao.findById(IDUser).get());
         return "index";
@@ -101,5 +120,10 @@ public class Controllermain {
         project.suppTask(task);
         projectDao.save(project);
         return "redirect:/projet/{id}";
+    }
+
+    @GetMapping("/errorCo")
+    public String errorCo(){
+        return "/errorCo";
     }
 }
