@@ -24,11 +24,47 @@ public class Controllermain {
     private final TaskDao taskDao;
     private int IDUser=0;
     private String messageError="";
+    private List<String> imgList = new ArrayList<>();
 
     public Controllermain(UserDao userDao, ProjectDao projectDao, TaskDao taskDao) {
         this.userDao = userDao;
         this.projectDao = projectDao;
         this.taskDao = taskDao;
+
+        for(int i=1; i<=12; i++){
+            imgList.add("img/showcase/project"+i+".png");
+        }
+    }
+
+    //INSCRIPTION
+    @GetMapping("/inscription")
+    public String inscription(Model model){
+        messageError="";
+        User user = new User();
+        user.setId(null);
+        model.addAttribute("user", user );
+        model.addAttribute("messEr", messageError);
+        return "inscription";
+    }
+
+    @PostMapping("/inscription")
+    public String newUser(Model model, User user){
+
+        if(user.getLastName().equals("") || user.getFirstName().equals("") || user.getPassword().equals("")){
+            messageError="Veuillez remplir tous les champs.";
+            return "redirect:/inscription";
+        }
+        Iterable<User> users = userDao.findAll();
+
+        for (User worker:users) {
+            if(user.getFirstName().equals(worker.getFirstName())){
+                messageError="Ce user existe déjà.";
+                return "redirect:/inscription";
+            }
+        }
+
+        userDao.save(user);
+        return "redirect:/login";
     }
 
     //LOGIN\\
@@ -82,41 +118,20 @@ public class Controllermain {
         return "index";
     }
 
-    //INSCRIPTION
-    @GetMapping("/inscription")
-    public String inscription(Model model){
-        messageError="";
-        User user = new User();
-        user.setId(null);
-        model.addAttribute("user", user );
-        model.addAttribute("messEr", messageError);
-        return "inscription";
-    }
-
-    @PostMapping("/inscription")
-    public String newUser(Model model, User user){
-
-        if(user.getLastName().equals("") || user.getFirstName().equals("") || user.getPassword().equals("")){
-            messageError="Veuillez remplir tous les champs.";
-            return "redirect:/inscription";
-        }
-        Iterable<User> users = userDao.findAll();
-
-        for (User worker:users) {
-            if(user.getFirstName().equals(worker.getFirstName())){
-                messageError="Ce user existe déjà.";
-                return "redirect:/inscription";
-            }
-        }
-
-        userDao.save(user);
-        return "redirect:/login";
-    }
-
     //ADD PROJECT\\
     @PostMapping("/index")
     public String addProject(Project project, Model model) {
         List<User> workers = project.getWorker();
+        int count = (int) projectDao.count();
+
+        if(count>11){
+            do {
+                count = count - 11;
+
+            }while (count > 11) ;}
+
+        project.setImg(imgList.get(count));
+
         for (User user:workers) {
             if(user.getId()==IDUser){
                 projectDao.save(project);

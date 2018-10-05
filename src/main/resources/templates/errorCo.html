@@ -43,14 +43,13 @@
 
     <!-- ======== @Region: #content ======== -->
     <div id="content">
-      <div class="row">
-        <div class="col-sm-6 col-sm-offset-3">
-          <div class="panel panel-default">
+      <div class="row col-sm-6 col-sm-offset-3 panel panel-default">
             <div class="panel-heading">
               <h3 class="panel-title">
                   Login
                 </h3>
             </div>
+
             <div class="panel-body">
               <form accept-charset="UTF-8" role="form" action="#" th:action="@{/login}" th:object="${login}" method="get">
                 <fieldset>
@@ -62,9 +61,6 @@
               </form>
             </div>
           </div>
-        </div>
-      </div>
-      <!-- /row -->
     </div>
 
   <!-- Required JavaScript Libraries -->
@@ -73,14 +69,10 @@
   <script src="../lib/owlcarousel/owl.carousel.min.js"></script>
   <script src="../lib/stellar/stellar.min.js"></script>
   <script src="../lib/waypoints/waypoints.min.js"></script>
-  <script src="../lib/counterup/counterup.min.js"></script>
   <script src="../contactform/contactform.js"></script>
 
   <!-- Template Specisifc Custom Javascript File -->
   <script src="../js/custom.js"></script>
-
-  <!--Custom scripts demo background & colour switcher - OPTIONAL -->
-  <script src="../js/color-switcher.js"></script>
 
   <!--Contactform script -->
   <script src="../contactform/contactform.js"></script>

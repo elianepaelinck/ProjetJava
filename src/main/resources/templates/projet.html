@@ -35,9 +35,6 @@
 </head>
 
 <body class="page-index has-hero">
-  <!--Change the background class to alter background image, options are: benches, boots, buildings, city, metro -->
-
-  <!-- ======== @Region: #content ======== -->
       <div class="block-contained">
           <h1 class="h-lg m-t-0 m-b-lg text-shadow-grey">
               <td th:text="${projet.nom}"></td>
@@ -88,7 +85,7 @@
               </div>
           </div>
 
-          <div class="raw">
+          <div class="row">
               <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 text-center" th:each="task : ${projet.TasksP}">
                   <div class="panel panel-default panel-pricing panel-pricing-highlighted text-center">
                       <div class="panel-heading">
@@ -103,7 +100,7 @@
                                   <td th:text="${uti.firstName}"></td>
                               </li>
                           </ul>
-                          <a data-toggle="modal" data-target="#modifier" class="btn btn-primary btn-sm">Modifier</a>
+                          <!--<a data-toggle="modal" data-target="#modifier" class="btn btn-primary btn-sm">Modifier</a>-->
                           <form th:action="@{'/projet/'+${projet.id}+'/'+${task.id}}" th:object="${task}" method="POST">
                               <button>Supprimer</button>
                           </form>
@@ -140,14 +137,10 @@
   <script src="../lib/owlcarousel/owl.carousel.min.js"></script>
   <script src="../lib/stellar/stellar.min.js"></script>
   <script src="../lib/waypoints/waypoints.min.js"></script>
-  <script src="../lib/counterup/counterup.min.js"></script>
   <script src="../contactform/contactform.js"></script>
 
   <!-- Template Specisifc Custom Javascript File -->
   <script src="../js/custom.js"></script>
-
-  <!--Custom scripts demo background & colour switcher - OPTIONAL -->
-  <script src="../js/color-switcher.js"></script>
 
   <!--Contactform script -->
   <script src="../contactform/contactform.js"></script>

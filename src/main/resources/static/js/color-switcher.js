@@ -1,8 +1,4 @@
-/********************************************************
- *
- * Custom scripts demo background & colour switcher
- *
- *******************************************************/
+
 $(document).ready(function() {
   // Background & colour switcher
   // =============================

@@ -28,12 +28,6 @@ public class ProjetJava {
 
 
   public static void main(String[] args) {
-    // Point d'entrée de l'application.
-    // On dit à Spring de s'initialiser
-    // Il va aller "regarder" nos classes et détecter les annotations des singletons
-    // (@Controller, @Repository, @Component, @Service, etc...)
-    // Ensuite, il va construire l'arbre de dépendances et le résoudre en injectant les données dans les bonnes classes
-
     SpringApplication.run(ProjetJava.class);
 
   }
@@ -44,38 +38,73 @@ public class ProjetJava {
    */
   @PostConstruct
   public void init() {
-    /*userDao.deleteAll();
+    userDao.deleteAll();
     taskDao.deleteAll();
     projectDao.deleteAll();
 
-    userDao.save(new User(null, "Loic", "Ortola","password"));
-    userDao.save(new User(null, "Ambroise", "Soullier","password"));
-    userDao.save(new User(null, "Harry", "Covert","password"));
+    //USERS
+    User loic = new User(null, "Loic", "Ortola","password");
+    User ambroise = new User(null, "Ambroise", "Soullier","password");
+    User harry = new User(null, "Harry", "Covert","password");
+    User luc = new User(null, "Luc", "Lebert","password");
+    User val = new User(null, "Valentin", "Mazhar","password");
 
-    //utilisateurs test
-    User luc = new User(null, "luc", "lebert","password");
-    User val = new User(null, "val", "mazhar","password");
+    userDao.save(loic);
+    userDao.save(ambroise);
+    userDao.save(harry);
     userDao.save(luc);
     userDao.save(val);
 
-    //liste utilisateurs test
+
+    //LISTS USERS
+     List<User> listeUser1 = new ArrayList();
+     listeUser1.add(luc);
+     listeUser1.add(val);
+     listeUser1.add(loic);
+     listeUser1.add(ambroise);
+     listeUser1.add(harry);
+
      List<User> listeUser2 = new ArrayList();
      listeUser2.add(luc);
      listeUser2.add(val);
-     List<User> listeUser1 = new ArrayList();
-     listeUser1.add(luc);
 
-    Task tache1 = new Task(null, "luchu ctg", false, "faire le menage", listeUser2);
-    Task tache2 = new Task(null,  "val", true, "ranger sa chambre", listeUser1);
-    taskDao.save(tache2);
+     List<User> listeUser3 = new ArrayList<>();
+     listeUser3.add(ambroise);
+     listeUser3.add(loic);
+     listeUser3.add(harry);
+
+     //TASKS
+    Task tache1 = new Task(null, "Faire le ménage", false, "Cuisine et salon", listeUser2);
+    Task tache2 = new Task(null,  "Ranger sa chambre", true, "Aspirateur et changer les draps", listeUser1);
+    Task tache3 = new Task(null,"Page Login",false,"Vérifier les connexion",listeUser2);
+    Task tache4 = new Task(null,"Dashboard",false,"Afficher projets",listeUser2);
+    Task tache5 = new Task(null,"Préparer le cours",false,"Faire le TP",listeUser3);
+
     taskDao.save(tache1);
-    List<Task> listeTask2 = new ArrayList();
-    listeTask2.add(tache2);
-    listeTask2.add(tache1);
+    taskDao.save(tache2);
+    taskDao.save(tache3);
+    taskDao.save(tache4);
+    taskDao.save(tache5);
 
-    Project testProject = new Project(null, "new project" , listeUser2, listeTask2);
-    Project testProject2 = new Project(null, "new project bis" , listeUser1, listeTask2);
-    projectDao.save(testProject);
-    projectDao.save(testProject2);*/
+    //LISTS TASKS
+    List<Task> listeTask1 = new ArrayList();
+    listeTask1.add(tache2);
+    listeTask1.add(tache1);
+
+    List<Task> listeTask2 = new ArrayList<>();
+    listeTask2.add(tache3);
+    listeTask2.add(tache4);
+
+    List<Task> listeTask3 = new ArrayList<>();
+    listeTask3.add(tache5);
+
+    //PROJECTS
+    Project project1 = new Project(null, "Projet personnel" , "img/showcase/project1.png", listeUser1, listeTask1);
+    Project project2 = new Project(null, "Projet scolaire" , "img/showcase/project2.png", listeUser2, listeTask2);
+    Project project3 = new Project(null, "Projet professionnel" , "img/showcase/project3.png", listeUser3, listeTask3);
+
+    projectDao.save(project1);
+    projectDao.save(project2);
+    projectDao.save(project3);
   }
 }

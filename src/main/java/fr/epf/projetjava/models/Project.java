@@ -1,7 +1,5 @@
 package fr.epf.projetjava.models;
 
-import fr.epf.projetjava.persistence.TaskDao;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -12,6 +10,7 @@ public class Project {
     @Id @GeneratedValue
     private Integer id;
     private String nom;
+    private String img;
     @ManyToMany
     private List<User> worker ;
     @ManyToMany
@@ -53,9 +52,10 @@ public class Project {
         TasksP.remove(task);
     }
 
-    public Project(Integer id, String nom, List<User> worker,List<Task> TasksP) {
+    public Project(Integer id, String nom, String img, List<User> worker, List<Task> TasksP) {
         this.id=id;
         this.nom = nom;
+        this.img = img;
         this.worker = worker;
         this.TasksP = TasksP;
     }
@@ -63,5 +63,12 @@ public class Project {
     public Project() {
     }
 
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
 }
 

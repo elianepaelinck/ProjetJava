@@ -35,11 +35,7 @@
 </head>
 
 <body class="page-index has-hero">
-  <!--Change the background class to alter background image, options are: benches, boots, buildings, city, metro -->
-
-  <!-- ======== @Region: #content ======== -->
   <div id="content">
-    <!-- Mission Statement  block-bg-noise -->
     <div class="mission text-center block block-pd-sm block-bg-noise">
       <div class="container">
         <h2 class="text-shadow-white">
@@ -80,29 +76,6 @@
                               <button type="submit" class="btn btn-lg btn-primary btn-block">Ajouter</button>
                           </div>
                       </form>
-                      <!--<form action="#" th:action="@{/index}" th:object="${projet}" method="post">
-                          <div class="modal-body">
-                              <div class="form-group">
-                                  <div class="input-group input-group-lg">
-                                      <span class="input-group-addon"><i class="fa fa-fw fa-pencil"></i></span>
-                                      <input type="text" class="form-control" placeholder="Nom du projet" th:field="*{nom}">
-                                  </div>
-                              </div>
-                              <div class="form-group">
-                                  <div class="input-group input-group-lg">
-                                      <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
-                                      <select multiple class="form-control">
-                                          <option th:each="user : ${datauser}">
-                                              <td th:text="${user.firstName}"></td>
-                                          </option>
-                                      </select>
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="modal-footer">
-                              <input class="btn btn-lg btn-primary btn-block" type="submit" value="Ajouter" data-dismiss="modal">
-                          </div>
-                      </form>-->
                   </div>
               </div>
           </div>
@@ -116,10 +89,10 @@
             Mes projets
           </h2>
 
-          <div class ="raw">
+          <div class ="row" >
           <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" th:each="proj : ${dataproj}">
             <a class="overlay-wrapper">
-                <img src="img/showcase/project1.png" alt="Project 1 image" class="img-responsive underlay">
+                <img th:src="${proj.img}" alt="Project 1 image" class="img-responsive underlay">
                 <span class="overlay">
                   <span class="overlay-content"> <span class="h4">
                       <form action="#" th:action="@{'/projet/'+${proj.id}}" th:object="${proj}" method="GET">
@@ -142,103 +115,6 @@
             </div>
           </div>
           </div>
-
-          <!--<div class="item">
-
-          <form th:action="@{'/projet/'+${proj.id}}" th:object="${proj}" method="GET">
-                  <button><td th:text="${proj.nom}"></td></button></form>
-
-            <a href="http://localhost:8080/projet" class="overlay-wrapper">
-                <img src="img/showcase/project2.png" alt="Project 2 image" class="img-responsive underlay">
-                <span class="overlay">
-                  <span class="overlay-content"> <span class="h4">Projet 2</span> </span>
-                </span>
-              </a>
-            <div class="item-details bg-noise">
-              <h4 class="item-title">
-                  <a href="http://localhost:8080/projet">Projet 2</a>
-                </h4>
-            </div>
-          </div>
-          <div class="item">
-            <a href="http://localhost:8080/projet" class="overlay-wrapper">
-                <img src="img/showcase/project3.png" alt="Project 3 image" class="img-responsive underlay">
-                <span class="overlay">
-                  <span class="overlay-content"> <span class="h4">Projet 3</span> </span>
-                </span>
-              </a>
-            <div class="item-details bg-noise">
-              <h4 class="item-title">
-                  <a href="http://localhost:8080/projet">Projet 3</a>
-                </h4>
-            </div>
-          </div>
-          <div class="item">
-            <a href="http://localhost:8080/projet" class="overlay-wrapper">
-                <img src="img/showcase/project4.png" alt="Project 4 image" class="img-responsive underlay">
-                <span class="overlay">
-                  <span class="overlay-content"> <span class="h4">Project 4</span> </span>
-                </span>
-              </a>
-            <div class="item-details bg-noise">
-              <h4 class="item-title">
-                  <a href="http://localhost:8080/projet">Project 4</a>
-                </h4>
-            </div>
-          </div>
-          <div class="item">
-            <a href="http://localhost:8080/projet" class="overlay-wrapper">
-                <img src="img/showcase/project5.png" alt="Project 5 image" class="img-responsive underlay">
-                <span class="overlay">
-                  <span class="overlay-content"> <span class="h4">Projet 5</span> </span>
-                </span>
-              </a>
-            <div class="item-details bg-noise">
-              <h4 class="item-title">
-                  <a href="http://localhost:8080/projet">Projet 5</a>
-                </h4>
-            </div>
-          </div>
-          <div class="item">
-            <a href="http://localhost:8080/projet" class="overlay-wrapper">
-                <img src="img/showcase/project6.png" alt="Project 6 image" class="img-responsive underlay">
-                <span class="overlay">
-                  <span class="overlay-content"> <span class="h4">Projet 6</span> </span>
-                </span>
-              </a>
-            <div class="item-details bg-noise">
-              <h4 class="item-title">
-                  <a href="http://localhost:8080/projet">Projet 6</a>
-                </h4>
-            </div>
-          </div>
-          <div class="item">
-            <a href="http://localhost:8080/projet" class="overlay-wrapper">
-                <img src="img/showcase/project7.png" alt="Project 7 image" class="img-responsive underlay">
-                <span class="overlay">
-                  <span class="overlay-content"> <span class="h4">Projet 7</span> </span>
-                </span>
-              </a>
-            <div class="item-details bg-noise">
-              <h4 class="item-title">
-                  <a href="http://localhost:8080/projet">Projet 7</a>
-                </h4>
-            </div>
-          </div>
-          <div class="item">
-            <a href="http://localhost:8080/projet" class="overlay-wrapper">
-                <img src="img/showcase/project8.png" alt="Project 8 image" class="img-responsive underlay">
-                <span class="overlay">
-                  <span class="overlay-content"> <span class="h4">Projet 8</span> </span>
-                </span>
-              </a>
-            <div class="item-details bg-noise">
-              <h4 class="item-title">
-                  <a href="http://localhost:8080/projet">Projet 8</a>
-                </h4>
-            </div>
-          </div>-->
-
       </div>
     </div>
   </div>
@@ -250,14 +126,10 @@
   <script src="../lib/owlcarousel/owl.carousel.min.js"></script>
   <script src="../lib/stellar/stellar.min.js"></script>
   <script src="../lib/waypoints/waypoints.min.js"></script>
-  <script src="../lib/counterup/counterup.min.js"></script>
   <script src="../contactform/contactform.js"></script>
 
   <!-- Template Specisifc Custom Javascript File -->
   <script src="../js/custom.js"></script>
-
-  <!--Custom scripts demo background & colour switcher - OPTIONAL -->
-  <script src="../js/color-switcher.js"></script>
 
   <!--Contactform script -->
   <script src="../contactform/contactform.js"></script>
