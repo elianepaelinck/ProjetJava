@@ -23,6 +23,7 @@ public class Controllermain {
     private final ProjectDao projectDao;
     private final TaskDao taskDao;
     private int IDUser=0;
+    private String messageError="";
 
     public Controllermain(UserDao userDao, ProjectDao projectDao, TaskDao taskDao) {
         this.userDao = userDao;
@@ -33,8 +34,10 @@ public class Controllermain {
     //LOGIN\\
     @GetMapping("/login")
     public String login(Model model){
+        IDUser=0;
         model.addAttribute("user", userDao.findAll());
         model.addAttribute("login", new Login());
+        model.addAttribute("messEr",messageError);
         return "login";
     }
 
@@ -49,7 +52,8 @@ public class Controllermain {
                return "redirect:/index";
             }
         }
-        return "login";
+        messageError="Erreur de connection.";
+        return "redirect:/login";
     }
 
     //INDEX\\
@@ -81,22 +85,27 @@ public class Controllermain {
     //INSCRIPTION
     @GetMapping("/inscription")
     public String inscription(Model model){
+        messageError="";
         User user = new User();
         user.setId(null);
         model.addAttribute("user", user );
+        model.addAttribute("messEr", messageError);
         return "inscription";
     }
 
     @PostMapping("/inscription")
     public String newUser(Model model, User user){
-        if(user.getLastName()==null || user.getFirstName()==null || user.getPassword()==null){
-            return "inscription";
+
+        if(user.getLastName().equals("") || user.getFirstName().equals("") || user.getPassword().equals("")){
+            messageError="Veuillez remplir tous les champs.";
+            return "redirect:/inscription";
         }
         Iterable<User> users = userDao.findAll();
 
         for (User worker:users) {
-            if(user.getLastName()==worker.getLastName() || user.getFirstName()==worker.getFirstName() || user.getPassword()==worker.getPassword()){
-                return "inscription";
+            if(user.getFirstName().equals(worker.getFirstName())){
+                messageError="Ce user existe déjà.";
+                return "redirect:/inscription";
             }
         }
 
@@ -107,6 +116,14 @@ public class Controllermain {
     //ADD PROJECT\\
     @PostMapping("/index")
     public String addProject(Project project, Model model) {
+        List<User> workers = project.getWorker();
+        for (User user:workers) {
+            if(user.getId()==IDUser){
+                projectDao.save(project);
+                return "redirect:/index";
+            }
+        }
+        workers.add(userDao.findById(IDUser).get());
         projectDao.save(project);
         return "redirect:/index";
     }
