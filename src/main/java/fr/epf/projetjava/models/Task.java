@@ -13,7 +13,7 @@ public class Task {
     @GeneratedValue
     private Integer id;
     private String nom;
-    private Boolean statut;
+    private String statut;
     private String description;
     @ManyToMany
     private List<User> users;
@@ -34,11 +34,11 @@ public class Task {
         this.nom = nom;
     }
 
-    public Boolean getStatut() {
+    public String getStatut() {
         return statut;
     }
 
-    public void setStatut(Boolean statut) {
+    public void setStatut(String statut) {
         this.statut = statut;
     }
 
@@ -58,7 +58,7 @@ public class Task {
         this.users = users;
     }
 
-    public Task(Integer id, String nom, Boolean statut, String description, List<User> user) {
+    public Task(Integer id, String nom, String statut, String description, List<User> user) {
         this.id = id;
         this.nom = nom;
         this.statut = statut;

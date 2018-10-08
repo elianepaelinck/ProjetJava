@@ -2,137 +2,147 @@
 <html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <title>Dashboard</title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta content="" name="keywords">
-  <meta content="" name="description">
+    <meta charset="utf-8">
+    <title>Dashboard</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
 
-  <!-- Fav and touch icons -->
-  <link rel="shortcut icon" href="../img/icone-projet.png">
-  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../img/icone-projet.png">
-  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../img/icone-projet.png">
-  <link rel="apple-touch-icon-precomposed" href="../img/icone-projet.png">
+    <!-- Fav and touch icons -->
+    <link rel="shortcut icon" href="../img/icone-projet.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../img/icone-projet.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../img/icone-projet.png">
+    <link rel="apple-touch-icon-precomposed" href="../img/icone-projet.png">
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900" rel="stylesheet">
 
-  <!-- Bootstrap CSS File -->
-  <link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap CSS File -->
+    <link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Libraries CSS Files -->
-  <link href="../lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="../lib/owlcarousel/owl.carousel.min.css" rel="stylesheet">
-  <link href="../lib/owlcarousel/owl.theme.min.css" rel="stylesheet">
-  <link href="../lib/owlcarousel/owl.transitions.min.css" rel="stylesheet">
+    <!-- Libraries CSS Files -->
+    <link href="../lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../lib/owlcarousel/owl.carousel.min.css" rel="stylesheet">
+    <link href="../lib/owlcarousel/owl.theme.min.css" rel="stylesheet">
+    <link href="../lib/owlcarousel/owl.transitions.min.css" rel="stylesheet">
 
-  <!-- Main Stylesheet File -->
-  <link href="../css/style.css" rel="stylesheet">
+    <!-- Main Stylesheet File -->
+    <link href="../css/style.css" rel="stylesheet">
 
-  <!--Your custom colour override - predefined colours are: colour-blue.css, colour-green.css, colour-lavander.css, orange is default-->
-  <link href="../css/colour-green.css" id="colour-scheme" rel="stylesheet">
+    <!--Your custom colour override - predefined colours are: colour-blue.css, colour-green.css, colour-lavander.css, orange is default-->
+    <link href="../css/colour-green.css" id="colour-scheme" rel="stylesheet">
 
 </head>
 
 <body class="page-index has-hero">
-  <div id="content">
+<div id="content">
     <div class="mission text-center block block-pd-sm block-bg-noise">
-      <div class="container">
-        <h2 class="text-shadow-white">
-            Dashboard de <td th:text="${user.firstName}"></td>
-            <a data-toggle="modal" data-target="#ajouterprojet" class="btn btn-more"><i class="fa fa-plus"></i>Ajouter un projet</a>
-          </h2>
+        <div class="container">
+            <h2 class="text-shadow-white">
+                Dashboard de
+                <td th:text="${user.firstName}"></td>
+                <a data-toggle="modal" data-target="#ajouterprojet" class="btn btn-more"><i class="fa fa-plus"></i>Ajouter
+                    un projet</a>
+            </h2>
 
-          <!--Modal-->
-          <div class="modal fade" id="ajouterprojet" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                      <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                          </button>
-                          <h5 class="modal-title" id="exampleModalLabel">Ajouter un projet</h5>
-                      </div>
-                      <form action="#" th:action="@{/index}" th:object="${projet}" method="post">
-                          <div class="modal-body">
-                              <div class="form-group">
-                                  <div class="input-group input-group-lg">
-                                      <span class="input-group-addon"><i class="fa fa-fw fa-pencil"></i></span>
-                                      <input type="text" class="input-lg form-control" id="firstname"
-                                             th:field="*{nom}" placeholder="Nom">
-                                  </div>
-                              </div>
-                          <div class="form-group">
-                              <div class="input-group input-group-lg">
-                                  <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
-                                  <select multiple class="form-control" th:field="*{worker}">
-                                      <option th:each="user : ${datauser}" th:text="${user.firstName}" th:value="${user.id}">
-                                      </option>
-                                  </select>
-                              </div>
-                          </div>
-                          </div>
-                          <div class="text-right modal-footer">
-                              <button type="submit" class="btn btn-lg btn-primary btn-block">Ajouter</button>
-                          </div>
-                      </form>
-                  </div>
-              </div>
-          </div>
+            <!--Modal-->
+            <div class="modal fade" id="ajouterprojet" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h5 class="modal-title" id="exampleModalLabel">Ajouter un projet</h5>
+                        </div>
+                        <form action="#" th:action="@{/index}" th:object="${projet}" method="post">
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <div class="input-group input-group-lg">
+                                        <span class="input-group-addon"><i class="fa fa-fw fa-pencil"></i></span>
+                                        <input type="text" class="input-lg form-control" id="firstname"
+                                               th:field="*{nom}" placeholder="Nom">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group input-group-lg">
+                                        <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
+                                        <select multiple class="form-control" th:field="*{worker}">
+                                            <option th:each="user : ${datauser}" th:text="${user.firstName}"
+                                                    th:value="${user.id}">
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-right modal-footer">
+                                <button type="submit" class="btn btn-lg btn-primary btn-block">Ajouter</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
 
-      </div>
+        </div>
     </div>
     <!--Showcase-->
     <div class="showcase block">
-      <div class="container">
-        <h2 class="h-lg m-t-0 m-b-lg text-shadow-grey">
-            Mes projets
-          </h2>
+        <div class="container">
+            <h2 class="h-lg m-t-0 m-b-lg text-shadow-grey">
+                Mes projets
+            </h2>
 
-          <div class ="row" >
-          <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" th:each="proj : ${dataproj}">
-            <a class="overlay-wrapper">
-                <img th:src="${proj.img}" alt="Project 1 image" class="img-responsive underlay">
-                <span class="overlay">
+            <div class="item-carousel" data-toggle="owlcarousel"
+                 data-owlcarousel-settings='{"items":4, "pagination":false, "navigation":true, "itemsScaleUp":true}'>
+                <div class="item" th:each="proj : ${dataproj}">
+                    <a class="overlay-wrapper">
+                        <img th:src="${proj.img}" alt="Project 1 image" class="img-responsive underlay">
+                        <span class="overlay">
                   <span class="overlay-content"> <span class="h4">
                       <form action="#" th:action="@{'/projet/'+${proj.id}}" th:object="${proj}" method="GET">
-                     <button><td th:text="${proj.nom}"></td></button>
+                     <button type="submit" class="btn btn-link"><td th:text="${proj.nom}"></td></button>
                   </form>
                       </span> </span>
                 </span>
-              </a>
-            <div class="item-details bg-noise">
-              <h4 class="item-title row">
-                  <div class="col-sm-9">
-                  <form action="#" th:action="@{'/projet/'+${proj.id}}" th:object="${proj}" method="GET">
-                     <button><td th:text="${proj.nom}"></td></button>
-                  </form></div>
-                  <div class="col-sm-3">
-                  <form action="#" th:action="@{'/index/'+${proj.id}}" th:object="${proj}" method="POST">
-                      <button class="fa fa-trash"></button>
-                  </form></div>
-              </h4>
+                    </a>
+                    <div class="item-details bg-noise">
+                        <h4 class="item-title row">
+                            <div class="col-sm-9">
+                                <form action="#" th:action="@{'/projet/'+${proj.id}}" th:object="${proj}"
+                                      method="GET">
+                                    <button type="submit" class="btn btn-outline-secondary">
+                                        <i class="fa fa-tasks"></i>  <td th:text="${proj.nom}"></td>
+                                    </button>
+                                </form>
+                            </div>
+                            <div class="col-sm-3">
+                                <form action="#" th:action="@{'/index/'+${proj.id}}" th:object="${proj}"
+                                      method="POST">
+                                    <button type="submit" class="btn btn-light fa fa-trash"></button>
+                                </form>
+                            </div>
+                        </h4>
+                    </div>
+                </div>
             </div>
-          </div>
-          </div>
-      </div>
+        </div>
     </div>
-  </div>
+</div>
 
+<!-- Required JavaScript Libraries -->
+<script src="../lib/jquery/jquery.min.js"></script>
+<script src="../lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="../lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="../lib/stellar/stellar.min.js"></script>
+<script src="../lib/waypoints/waypoints.min.js"></script>
+<script src="../contactform/contactform.js"></script>
 
-  <!-- Required JavaScript Libraries -->
-  <script src="../lib/jquery/jquery.min.js"></script>
-  <script src="../lib/bootstrap/js/bootstrap.min.js"></script>
-  <script src="../lib/owlcarousel/owl.carousel.min.js"></script>
-  <script src="../lib/stellar/stellar.min.js"></script>
-  <script src="../lib/waypoints/waypoints.min.js"></script>
-  <script src="../contactform/contactform.js"></script>
+<!-- Template Specisifc Custom Javascript File -->
+<script src="../js/custom.js"></script>
 
-  <!-- Template Specisifc Custom Javascript File -->
-  <script src="../js/custom.js"></script>
-
-  <!--Contactform script -->
-  <script src="../contactform/contactform.js"></script>
+<!--Contactform script -->
+<script src="../contactform/contactform.js"></script>
 
 </body>
 

@@ -19,6 +19,7 @@
 
     <!-- Bootstrap CSS File -->
     <link href="../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 
     <!-- Libraries CSS Files -->
     <link href="../lib/font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -90,6 +91,7 @@
                   <div class="panel panel-default panel-pricing panel-pricing-highlighted text-center">
                       <div class="panel-heading">
                           <h4 class="panel-title">
+                              <span class="badge badge-secondary" th:text="${task.statut}"></span>
                               <td th:text="${task.nom}"></td>
                           </h4>
                       </div>
@@ -100,32 +102,11 @@
                                   <td th:text="${uti.firstName}"></td>
                               </li>
                           </ul>
-                          <!--<a data-toggle="modal" data-target="#modifier" class="btn btn-primary btn-sm">Modifier</a>-->
                           <form th:action="@{'/projet/'+${projet.id}+'/'+${task.id}}" th:object="${task}" method="POST">
-                              <button>Supprimer</button>
+                              <button type="submit" class="btn btn-light fa fa-trash"></button>
                           </form>
                       </div>
                   </div>
-              </div>
-          </div>
-      </div>
-  </div>
-
-  <!-- Modal -->
-  <div class="modal fade" id="modifier" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-          <div class="modal-content">
-              <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel2">Modifier la tâche</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                  </button>
-              </div>
-              <div class="modal-body">
-                  ...
-              </div>
-              <div class="modal-footer">
-                  <input class="btn btn-lg btn-primary btn-block" type="submit" value="Modifier" data-dismiss="modal">
               </div>
           </div>
       </div>
@@ -137,7 +118,7 @@
   <script src="../lib/owlcarousel/owl.carousel.min.js"></script>
   <script src="../lib/stellar/stellar.min.js"></script>
   <script src="../lib/waypoints/waypoints.min.js"></script>
-  <script src="../contactform/contactform.js"></script>
+  <script src="../contactform/contactform.js"></script><script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 
   <!-- Template Specisifc Custom Javascript File -->
   <script src="../js/custom.js"></script>

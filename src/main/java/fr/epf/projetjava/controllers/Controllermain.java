@@ -165,6 +165,7 @@ public class Controllermain {
     @RequestMapping(value = "/projet/{id}", method = RequestMethod.POST)
     public String addTask(@PathVariable("id") int projectId, Task task, Model model){
         Project project = projectDao.findById(projectId).get();
+        task.setStatut("A faire");
         project.addTask(taskDao.save(task));
         projectDao.save(project);
         return "redirect:/projet/{id}";

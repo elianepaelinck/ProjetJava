@@ -74,11 +74,11 @@ public class ProjetJava {
      listeUser3.add(harry);
 
      //TASKS
-    Task tache1 = new Task(null, "Faire le ménage", false, "Cuisine et salon", listeUser2);
-    Task tache2 = new Task(null,  "Ranger sa chambre", true, "Aspirateur et changer les draps", listeUser1);
-    Task tache3 = new Task(null,"Page Login",false,"Vérifier les connexion",listeUser2);
-    Task tache4 = new Task(null,"Dashboard",false,"Afficher projets",listeUser2);
-    Task tache5 = new Task(null,"Préparer le cours",false,"Faire le TP",listeUser3);
+    Task tache1 = new Task(null, "Faire le ménage", "Fait", "Cuisine et salon", listeUser2);
+    Task tache2 = new Task(null,  "Ranger sa chambre", "A faire", "Aspirateur et changer les draps", listeUser1);
+    Task tache3 = new Task(null,"Page Login","Fait","Vérifier les connexion",listeUser2);
+    Task tache4 = new Task(null,"Dashboard","A faire","Afficher projets",listeUser2);
+    Task tache5 = new Task(null,"Préparer le cours","A faire","Faire le TP",listeUser3);
 
     taskDao.save(tache1);
     taskDao.save(tache2);
